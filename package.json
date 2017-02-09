@@ -1,0 +1,13 @@
+{
+  "name": "outrigger-docs",
+  "description": "Documentation for Outrigger",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": "2.x"
+  },
+  "private": true,
+  "dependencies": {
+    "markdownlint-cli": "^0.2.0"
+  }
+}

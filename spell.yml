@@ -1,0 +1,28 @@
+version: "2.1"
+
+# Container for executing spell checking 
+# Typical Usage: docker-compose -f spell.yml run --rm spell and then run
+# the spellchecker command giving it the directory to spellcheck
+#
+# This container is set to allow for updating the project dictionary.
+# Several items or forms of items aren't added intentionally to help review
+# usage and casing. Examples: using Drush in common usage, drush in commands
+#
+# Items which can also be common typos (usr instead of user) are also not
+# added. When using the spellchecker please carefully consider whether to
+# add an item to the dictionary versus ignore it to continue to facilitate
+# this form of review.
+
+services:
+
+  spell:
+    build: env/aspell
+    network_mode: "bridge"
+    entrypoint: [ "/init" ]
+    working_dir: /code
+    command: /bin/bash
+    volumes:
+      - .:/code
+      - ./env/aspell/root/root/.aspell.en.pws:/root/.aspell.en.pws
+      - ./env/aspell/root/usr/bin/spellcheck:/usr/bin/spellcheck
+

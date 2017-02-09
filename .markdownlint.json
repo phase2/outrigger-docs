@@ -1,0 +1,13 @@
+{
+  "default": true,
+  "header-style": { "style": "atx" },
+  "ul-indent": { "indent": 4 },
+  "line-length": { "line_length": 125, "code_blocks": false, "tables": false },
+  "commands-show-output": false,
+  "ol-prefix": "one",
+  "ul-style": "asterisk",
+  "no-inline-html": false,
+  "hr-style": "---",
+  "required-headers": null,
+  "no-trailing-spaces": false
+}

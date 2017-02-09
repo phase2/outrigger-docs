@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo Usage: $0 directory_to_check
+  exit 1
+fi
+
+find $1 -type f -exec sh -c '
+  for FILE do
+    case $(file "$FILE") in
+      *text*)
+        echo Checking $FILE
+        aspell -x --mode=url -c "$FILE"
+        ;;
+      *)
+        echo Skipping non text file $FILE
+    esac
+  done
+' -c {} \;

@@ -1,0 +1,20 @@
+version: "2.1"
+
+services:
+  docs:
+    build: .
+    working_dir: /documents
+    network_mode: "bridge"
+    volumes:
+      - .:/documents
+      - ../build:/site
+
+  serve:
+    extends: docs
+    command: "mkdocs serve --dev-addr=0.0.0.0:80"
+    ports:
+      - "80"
+    labels:
+      com.dnsdock.name: docs
+      com.dnsdock.image: outrigger
+

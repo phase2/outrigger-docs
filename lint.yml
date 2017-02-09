@@ -1,0 +1,27 @@
+version: "2.1"
+
+# Container for executing linting 
+# Typical Usage: docker-compose -f lint.yml run --rm lint
+# First Usage: docker-compose -f lint.yml run --rm install
+services:
+  lint:
+    extends:
+      service: base
+    command: "./node_modules/.bin/markdownlint docs && echo ''"
+
+  install:
+    extends:
+      service: base
+    command: "npm install"
+
+  base:
+    image: phase2/devtools-build:php70
+    network_mode: "bridge"
+    entrypoint: [ "/init" ]
+    working_dir: /code
+    command: /bin/bash
+    volumes:
+      - .:/code
+    environment:
+      NODE_VERSION: 4
+

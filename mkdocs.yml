@@ -1,0 +1,47 @@
+site_name: Outrigger Documentation
+repo_url: https://bitbucket.org/phase2tech/outrigger-docs
+site_author: Phase2
+google_analytics: ['UA-305109-83', 'auto']
+theme: readthedocs
+markdown_extensions:
+  - markdown.extensions.admonition
+pages:
+  - Home: 'index.md'
+  - Getting Started:
+    - System Requirements: 'getting-started/system-requirements.md'
+    - Mac Installation: 'getting-started/mac-installation.md'
+    - Linux Installation: 'getting-started/linux-installation.md'
+    - Windows Installation: 'getting-started/windows-installation.md'
+    - How to contribute: 'getting-started/how-to-contribute.md'
+  - Project Setup:
+    - Common Setup: 'project-setup/common-setup.md'
+    - New Projects: 'project-setup/new-projects.md'
+    - Existing Projects: 'project-setup/existing-projects.md'
+    - Docker Images: 'project-setup/docker-images.md'
+  - Common Tasks:
+    - Starting your project containers: 'common-tasks/starting-your-project-containers.md'
+    - Stopping containers and cleanup: 'common-tasks/stopping-containers-and-cleanup.md'
+    - Using the build container: 'common-tasks/using-the-build-container.md'
+    - Working with Volumes: 'common-tasks/working-with-volumes.md'
+    - Working Offline: 'common-tasks/working-offline.md'
+    - SSH into a container: 'common-tasks/ssh-into-a-container.md'
+    - Changing container configuration: 'common-tasks/customizing-container-configuration.md'
+    - Using watches: 'common-tasks/using-watches.md'
+    - Using Xdebug with PHPStorm: 'common-tasks/using-xdebug-with-phpstorm.md'
+    - Accessing logs: 'common-tasks/accessing-logs.md'
+    - SSH Keys for private repos: 'common-tasks/ssh-keys-for-private-repos.md'
+    - Seting up mail: 'common-tasks/setting-up-mail.md'
+    - DNS Resolution: 'common-tasks/dns-resolution.md'
+    - Upgrading Rig: 'common-tasks/upgrading-rig.md'
+    - Multiple Docker Machines: 'common-tasks/multiple-docker-machines.md'
+    - Routine Image Maintenance: 'common-tasks/routine-image-maintenance.md'
+    - Creating your own images: 'common-tasks/creating-your-own-images.md'
+  - FAQ:
+    - General: 'faq/general.md'
+    - Troubleshooting: 'faq/troubleshooting.md'
+    - Docker for Mac: 'faq/docker-for-mac.md'
+  - Appendix:
+    - Glossary: 'appendix/glossary.md'
+    - Architecture: 'appendix/architecture.md'
+    - Background: 'appendix/background.md'
+    - Library: 'appendix/library.md'
