@@ -29,7 +29,7 @@ directory, and more.
 
 Getting a shell into a build container to execute any operations is the simplest approach. You simply want to get access 
 to the `cli` container we defined in the compose file.  The command `docker-compose -f build.yml run cli` will start an 
-instance of the `phase2/build` image and run a bash shell for you.  From there you are free to use `drush`, 
+instance of the `outrigger/build` image and run a bash shell for you.  From there you are free to use `drush`, 
 `grunt` or whatever your little heart desires.
 
 ## Running commands, but not from a dedicated shell

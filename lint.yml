@@ -15,7 +15,7 @@ services:
     command: "npm install"
 
   base:
-    image: phase2/devtools-build:php70
+    image: outrigger/build:php70
     network_mode: "bridge"
     entrypoint: [ "/init" ]
     working_dir: /code

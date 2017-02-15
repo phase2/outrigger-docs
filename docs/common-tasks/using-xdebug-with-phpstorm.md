@@ -6,7 +6,7 @@ individually straightforward. This guide will walk you through getting setup qui
 !!! note "Applies to use of the Phase2 Docker Images"
     This documentation specifically pertains to using Phase2's 
     [Apache-PHP Docker Images](https://hub.docker.com/r/phase2/apache-php-base/) 
-    or the Phase2 [Build Image](https://hub.docker.com/r/phase2/build/).
+    or the Phase2 [Build Image](https://hub.docker.com/r/outrigger/build/).
 
     `rig` itself is only relevant in that it brokers standardized DNS practices.
 

@@ -36,7 +36,7 @@ docker-compose up -d
 ## Updates for a Specified Image
 
 ```bash
-docker pull phase2/build:php70
+docker pull outrigger/build:php70
 ```
 
 If either form of `pull` command fails, try re-running with the `--no-cache` option.

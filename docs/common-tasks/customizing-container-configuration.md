@@ -6,7 +6,7 @@ There are a few primary mechanisms for customizing the configuration of a contai
 
 Many images will react to environmental variables to alter their behavior. Images which offer
 this functionality should document it in the README for the image. For an example see the
-[Outrigger Build](https://hub.docker.com/r/phase2/build/) image. When environmental
+[Outrigger Build](https://hub.docker.com/r/outrigger/build/) image. When environmental
 configuration is available it can be triggered by specifying the appropriate value in the
 environments section of your docker compose file.
 

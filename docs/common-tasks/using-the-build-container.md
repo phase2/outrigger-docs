@@ -1,6 +1,6 @@
 # Using the Build Container
 
-Part of Outrigger is a [build](https://hub.docker.com/r/phase2/build/) image.  The idea of the build 
+Part of Outrigger is a [build](https://hub.docker.com/r/outrigger/build/) image.  The idea of the build 
 container is that it will have installed many of the tools you'd need to work on a project and the proper versions 
 so that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. 
 Providing these tools in a container means that you'll never have to worry about having the right tools installed on 

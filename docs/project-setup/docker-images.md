@@ -46,9 +46,9 @@ Apache & PHP runtime images. It currently support PHP 5.5, 5.6, and 7.0
 A base image for phase2/apache-php. Includes Apache and a default VirtualHost configured with a proxy to PHP-FPM. It 
 does not include the php runtime, that is handed in the extension image(s).
 
-### phase2/build 
+### outrigger/build 
 
-([Docker Hub](https://hub.docker.com/r/phase2/build/)) ([Repo](https://bitbucket.org/phase2tech/dockerrig-build))
+([Docker Hub](https://hub.docker.com/r/outrigger/build/)) ([Repo](https://github.com/phase2/docker-build))
 
 This image provides the collection of development tools necessary to build applications, bundled with a wide array of 
 tools useful for development and troubleshooting via the command-line interface. While it is possible to directly
