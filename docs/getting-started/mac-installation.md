@@ -18,7 +18,7 @@ If Homebrew is already installed, then be sure to do a `brew update`
    
 ### Install Outrigger (and dependencies)
 
-`brew install phase2/rig`
+`brew install phase2/outrigger/rig`
 
 This will install the `rig` binary as well the Docker and other dependencies.
 
