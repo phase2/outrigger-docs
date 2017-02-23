@@ -15,7 +15,7 @@ configured to run with 4 GB of RAM.
 
 For Virtualization you can choose one of the following
 
-* [VirtualBox 5.0.20+](https://www.virtualbox.org/wiki/Downloads) (the default supported option)
+* [VirtualBox 5.1.x](https://www.virtualbox.org/wiki/Downloads) (the default supported option)
 * [VMWare Fusion](http://www.vmware.com/products/fusion.html)
 * [Xhyve](https://github.com/mist64/xhyve#installation) with [Docker Machine Xhyve](https://github.com/zchee/docker-machine-driver-xhyve#install)
  
