@@ -1,6 +1,7 @@
 site_name: Outrigger Documentation
 repo_url: https://github.com/phase2/outrigger-docs
 site_author: Phase2
+site_favicon: favicon.ico
 google_analytics: ['UA-305109-83', 'auto']
 theme: readthedocs
 markdown_extensions:
