@@ -73,7 +73,7 @@ docker run -d \
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:latest-amd64 -domain=vm
+  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ```
 
 ### Method 2: dnsdock as main resolver
@@ -94,7 +94,7 @@ docker run -d \
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:latest-amd64 -domain=vm
+  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ```
 
 1. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
@@ -121,8 +121,34 @@ docker run -d \
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:latest-amd64 -domain=vm
+  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ```
+
+## Running dnsdoc as a service
+
+- Create the file `/etc/systemd/system/dnsdock.service` with the contents
+
+  ```
+  [Unit]
+  Description=DNSDock
+  After=docker.service
+  Requires=docker.service
+
+  [Service]
+  TimeoutStartSec=0
+  ExecStartPre=-/usr/bin/docker kill dnsdock
+  ExecStartPre=-/usr/bin/docker rm dnsdock
+  ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64  --domain=vm
+  ExecStop=/usr/bin/docker stop dnsdock
+  Restart=always
+  RestartSec=30
+
+  [Install]
+  WantedBy=multi-user.target
+  ```
+- Ensure docker is registered with systemctl: `systemctl enable docker`
+- Register dnsdoc service: `systemctl enable dnsdock && systemctl daemon-reoload`
+- Now you can start/stop the dnsdock container as any service with `systemctl start|stop dnsdock`. You can also check its status with `systemctl status dnsdock`.
 
 ## Verifying DNS is working
 
@@ -134,3 +160,32 @@ Once you have your environment set up, you can use the following tests to ensure
     - You should get echo replies from a 172.17.0.0/16 address.
 - `getent hosts dnsdock.outrigger.vm`
     - You should get a 172.17.0.0/16 address.
+- Verify DNS works across containers by opening a shell for a second test container
+  - `docker run --rm -l com.dnsdock.name=test -l com.dnsdock.image=outrigger -it alpine sh`
+  - from its prompt: `ping dnsdock.outrigger.vm`.
+    - You should get echo replies from a 172.17.0.0/16 address.
+
+## Troubleshooting
+
+- `bind: address already in use`
+
+  Make sure you are not running a service which binds all mapped IPs.  For example,
+
+  ```
+  $ docker run -d \
+  --name=dnsdock \
+  --restart=always \
+  -l com.dnsdock.name=dnsdock \
+  -l com.dnsdock.image=outrigger \
+  -p 172.17.0.1:53:53/udp \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
+  6aa76d0df98ede7e01c1cef53f105a79a60bab72ee905a1acd76ad57d4aeb014
+  docker: Error response from daemon: driver failed programming external connectivity on endpoint dnsdock
+  (62b3788e1f60530d1f468b46833f0bf8227955557da3a135356184f5b7d57bde): Error starting userland proxy: listen
+  udp 172.17.0.1:53: bind: address already in use.
+  ```
+
+  - In this case the cuplrit was `bind9`, and the solution: `systemctl stop bind9`.
+  - To avoid having to stop bind9 every session: `systemctl disable bind9`.
+  - You may need to restart NetworkManager: `systemctl restart NetworkManager`.
