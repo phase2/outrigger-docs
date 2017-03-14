@@ -9,14 +9,12 @@ how to run Outrigger projects on Linux.
 1. Use of one of three options to forward DNS queries to the dnsdock container (see 
 [Linux DNS configuration options](#markdown-header-linux-dns-configuration-options) below)
 
-## Linux installation on Fedora 22+
+## Linux installation on Fedora/Centos
 
-1. Install Docker 1.x.x and docker-compose
-    - `sudo dnf install docker-engine docker-compose`
-1. Add your user to the Docker group
-    - `sudo usermod -aG docker $USER`
-1. Log out, then back in, in order to pick up your new group assignments
-1. Set the DNS configuration for dnsdock
+1. [Install Docker for Fedora](https://docs.docker.com/engine/installation/linux/fedora/) or 
+[Install Docker for CentOS](https://docs.docker.com/engine/installation/linux/centos/)
+1. [Install Docker Compose](https://docs.docker.com/compose/install/)
+1. Set the DNS configuration for Docker
     - We need to modify the command that docker uses within systemd
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
@@ -31,23 +29,32 @@ how to run Outrigger projects on Linux.
 1. Start the docker daemon
     - `sudo systemctl start docker`
 
-## Linux installation on Ubuntu/Linux Mint/Debian
+## Linux installation on Ubuntu/Debian
 
-1. Install Docker 1.x.x
-    - `sudo apt-get install docker-engine`
-1. Install Pip
-    - `sudo apt-get install python-pip`
-1. Install docker-compose
-    - `sudo pip install docker-compose`
-1. Add your user to the Docker group
-    - `sudo usermod -aG docker $USER`
-1. Log out, then back in, in order to pick up your new group assignments
-1. Set the DNS configuration for dnsdock, as well as known RFC-1918 address space
+1. [Install Docker for Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or 
+[Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
+1. [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+If using Upstart
+- Set the DNS configuration for dnsdock, as well as known RFC-1918 address space
     - Please note that the following command will over-write your existing Docker daemon configuration file.  Please 
     set the -dns=172.17.0.1 option manually as an alternative
     - `echo 'DOCKER_OPTS="-dns=172.17.0.1"' | sudo tee /etc/default/docker`
-1. Start the docker daemon
+- Start the docker daemon
     - `sudo start docker`
+
+If using Systemd
+
+- Set the DNS configuration for Docker
+    - We need to modify the command that docker uses within systemd
+    - `sudo mkdir /etc/systemd/system/docker.service.d`
+    - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
+    - In that file put something like the following:    
+        ```bash
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
+        ```
 
 ## Linux DNS configuration options
 
@@ -124,55 +131,63 @@ docker run -d \
   aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ```
 
-## Running dnsdoc as a service
+## Running dnsdock as a service
 
-- Create the file `/etc/systemd/system/dnsdock.service` with the contents
+- Create the file `/etc/systemd/system/dnsdock.service` with the following contents
 
-  ```
-  [Unit]
-  Description=DNSDock
-  After=docker.service
-  Requires=docker.service
+```bash
+[Unit]
+Description=DNSDock
+After=docker.service
+Requires=docker.service
 
-  [Service]
-  TimeoutStartSec=0
-  ExecStartPre=-/usr/bin/docker kill dnsdock
-  ExecStartPre=-/usr/bin/docker rm dnsdock
-  ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64  --domain=vm
-  ExecStop=/usr/bin/docker stop dnsdock
-  Restart=always
-  RestartSec=30
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill dnsdock
+ExecStartPre=-/usr/bin/docker rm dnsdock
+ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64  --domain=vm
+ExecStop=/usr/bin/docker stop dnsdock
+Restart=always
+RestartSec=30
 
-  [Install]
-  WantedBy=multi-user.target
-  ```
-- Ensure docker is registered with systemctl: `systemctl enable docker`
-- Register dnsdoc service: `systemctl enable dnsdock && systemctl daemon-reoload`
-- Now you can start/stop the dnsdock container as any service with `systemctl start|stop dnsdock`. You can also check its status with `systemctl status dnsdock`.
+[Install]
+WantedBy=multi-user.target
+```
+
+- Ensure Docker is registered with systemctl
+    - `systemctl enable docker`
+- Register dnsdock service: 
+    - `systemctl enable dnsdock && systemctl daemon-reoload`
+- Now you can start/stop the dnsdock service with 
+    - `systemctl [start|stop] dnsdock`
+- You can also check its status 
+    - `systemctl status dnsdock`
 
 ## Verifying DNS is working
 
 Once you have your environment set up, you can use the following tests to ensure things are running properly.
 
 - `dig @172.17.0.1 dnsdock.outrigger.vm.`
-    - You should get a 172.17.0.0/16 address.
+    - You should get a 172.17.0.0/16 address
 - `ping dnsdock.outrigger.vm`
-    - You should get echo replies from a 172.17.0.0/16 address.
+    - You should get echo replies from a 172.17.0.0/16 address
 - `getent hosts dnsdock.outrigger.vm`
-    - You should get a 172.17.0.0/16 address.
-- Verify DNS works across containers by opening a shell for a second test container
-  - `docker run --rm -l com.dnsdock.name=test -l com.dnsdock.image=outrigger -it alpine sh`
-  - from its prompt: `ping dnsdock.outrigger.vm`.
-    - You should get echo replies from a 172.17.0.0/16 address.
+    - You should get a 172.17.0.0/16 address
+- Verify DNS works between containers
+    - Open a shell for a second test container
+        - `docker run --rm -l com.dnsdock.name=test -l com.dnsdock.image=outrigger -it alpine sh`
+    - From its prompt: 
+        - `ping dnsdock.outrigger.vm`
+        - You should get echo replies from a 172.17.0.0/16 address
 
 ## Troubleshooting
 
-- `bind: address already in use`
+### `bind: address already in use`
 
-  Make sure you are not running a service which binds all mapped IPs.  For example,
+Make sure you are not running a service which binds all mapped IPs.  For example,
 
-  ```
-  $ docker run -d \
+```bash
+> docker run -d \
   --name=dnsdock \
   --restart=always \
   -l com.dnsdock.name=dnsdock \
@@ -180,12 +195,18 @@ Once you have your environment set up, you can use the following tests to ensure
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
   aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
+  
   6aa76d0df98ede7e01c1cef53f105a79a60bab72ee905a1acd76ad57d4aeb014
   docker: Error response from daemon: driver failed programming external connectivity on endpoint dnsdock
   (62b3788e1f60530d1f468b46833f0bf8227955557da3a135356184f5b7d57bde): Error starting userland proxy: listen
   udp 172.17.0.1:53: bind: address already in use.
-  ```
+```
 
-  - In this case the cuplrit was `bind9`, and the solution: `systemctl stop bind9`.
-  - To avoid having to stop bind9 every session: `systemctl disable bind9`.
-  - You may need to restart NetworkManager: `systemctl restart NetworkManager`.
+In this case the culprit was `bind9/named` was attaching to all interfaces (on port 53)
+
+- The solution
+    - `systemctl stop bind9`
+- To avoid having to stop `bind9` every session
+    - `systemctl disable bind9`
+- You may need to restart NetworkManager
+    - `systemctl restart NetworkManager`
