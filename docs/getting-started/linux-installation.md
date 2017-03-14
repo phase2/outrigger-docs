@@ -19,11 +19,11 @@ how to run Outrigger projects on Linux.
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
     - In that file put something like the following:    
-        ```bash
-        [Service]
-        ExecStart=
-        ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
-        ```
+```bash
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
+```
 1. Set up the docker0 network as trusted
     - `sudo firewall-cmd --zone=trusted --add-interface=docker0 && sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent`
 1. Start the docker daemon
@@ -36,6 +36,7 @@ how to run Outrigger projects on Linux.
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 If using Upstart
+
 - Set the DNS configuration for dnsdock, as well as known RFC-1918 address space
     - Please note that the following command will over-write your existing Docker daemon configuration file.  Please 
     set the -dns=172.17.0.1 option manually as an alternative
