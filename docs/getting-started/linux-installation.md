@@ -51,6 +51,7 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
     - In that file put something like the following:    
+    
 ```bash
 [Service]
 ExecStart=
