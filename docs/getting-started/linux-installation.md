@@ -35,7 +35,7 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 [Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
 
-If using Upstart
+**If using Upstart**
 
 - Set the DNS configuration for dnsdock, as well as known RFC-1918 address space
     - Please note that the following command will over-write your existing Docker daemon configuration file.  Please 
@@ -44,7 +44,7 @@ If using Upstart
 - Start the docker daemon
     - `sudo start docker`
 
-If using Systemd
+**If using Systemd**
 
 - Set the DNS configuration for Docker
     - We need to modify the command that docker uses within systemd
