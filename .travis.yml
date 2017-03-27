@@ -7,7 +7,7 @@ before_install:
   - docker build -t outrigger/docs .
 
 script:
-  - docker run -v .:/documents -v ./build:/site outrigger/docs /bin/sh -c "mkdocs build --clean --site-dir /site"
+  - docker run -v $PWD:/documents -v $PWD/build:/site outrigger/docs /bin/sh -c "mkdocs build --clean --site-dir /site"
 
 deploy:
   provider: pages
