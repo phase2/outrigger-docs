@@ -7,7 +7,7 @@ services:
     network_mode: "bridge"
     volumes:
       - .:/documents
-      - ../build:/site
+      - ./build:/site
 
   serve:
     extends: docs
