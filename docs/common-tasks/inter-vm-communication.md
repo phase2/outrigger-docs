@@ -20,16 +20,11 @@ In addition to the network setup, you'll need to choose one of the following
 options so that the DNS entries for your containers can resolve to the proper IP
 address.
 
-### Hosts File
+### Outrigger DNS
 
-The first option is to manually manage the mapping of container domain names to
-the appropriate IP address. To do this, any time you start or stop containers
-you will need to take the output of `rig dns-records` and update the
-[hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) in the virtual machine.
-
-### DNSDock
-
-The second option is to set 172.17.0.1 as a DNS server in the virtual machine.
+The preferred option is to configure your virtual machine so that it uses the
+DNS services set up by Outrigger. To do so, set 172.17.0.1 as a DNS server in
+the virtual machine.
 
 For Windows, you can use [these instructions for using Google's Public DNS](https://developers.google.com/speed/public-dns/docs/using)
 to navigate to the correct area for setting your DNS server. Use 172.17.0.1
@@ -38,3 +33,11 @@ instead of the Google IP addresses.
 For Linux systems, refer to the **Linux DNS configuration options** section of
 the [Linux Installation instructions](../getting-started/linux-installation.md)
 and choose the option that best works for your system.
+
+### Hosts File
+
+If configuring DNS isn't a viable option for your virtual machine, a backup
+approach is to manually manage the mapping of container domain names to
+the appropriate IP address. To do this, any time you start or stop containers
+you will need to take the output of `rig dns-records` and update the
+[hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) in the virtual machine.
