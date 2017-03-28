@@ -30,6 +30,7 @@ pages:
     - Using watches: 'common-tasks/using-watches.md'
     - Using Xdebug with PHPStorm: 'common-tasks/using-xdebug-with-phpstorm.md'
     - Accessing logs: 'common-tasks/accessing-logs.md'
+    - Accessing containers from other VMs: 'common-tasks/inter-vm-communication.md'
     - SSH Keys for private repos: 'common-tasks/ssh-keys-for-private-repos.md'
     - Seting up mail: 'common-tasks/setting-up-mail.md'
     - DNS Resolution: 'common-tasks/dns-resolution.md'
