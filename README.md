@@ -1,3 +1,3 @@
 # Outrigger Documentation
 
-These docs are published at http://outrigger.readthedocs.io/
+These docs are published at http://docs.outrigger.sh/
