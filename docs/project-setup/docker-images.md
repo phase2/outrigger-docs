@@ -18,32 +18,32 @@ These images are built with the following software
 
 ## Images
 
-### phase2/servicebase 
+### outrigger/servicebase 
 
-([Docker Hub](https://hub.docker.com/r/phase2/servicebase/)) ([Repo](https://bitbucket.org/phase2tech/docker-servicebase)) 
+([Docker Hub](https://hub.docker.com/r/outrigger/servicebase/)) ([Repo](https://github.com/phase2/docker-servicebase)) 
 
 A CentOS 7 base image that has s6-overlay and confd. This is a useful image for extending to build non-trivial services.
 
-### phase2/servicebaselight 
+### outrigger/servicebaselight 
 
-([Docker Hub](https://hub.docker.com/r/phase2/servicebaselight/)) ([Repo](https://bitbucket.org/phase2tech/docker-servicebaselight))
+([Docker Hub](https://hub.docker.com/r/outrigger/servicebaselight/)) ([Repo](https://github.com/phase2/docker-servicebaselight))
 
 This is an Alpine-based image that has had the S6-overlay init system and confd added to it.
 
 In addition to the lightweight Alpine base it also includes bash and glibc so that Go-based Linux binaries will run. This 
 image is only ~8MB when compared to the 100+MB of servicebase.
 
-### phase2/apache-php 
+### outrigger/apache-php 
 
-([Docker Hub](https://hub.docker.com/r/phase2/apache-php/)) ([Repo](https://bitbucket.org/phase2tech/docker-apache-php))
+([Docker Hub](https://hub.docker.com/r/outrigger/apache-php/)) ([Repo](https://github.com/phase2/docker-apache-php))
 
 Apache & PHP runtime images. It currently support PHP 5.5, 5.6, and 7.0
 
-### phase2/apache-php-base 
+### outrigger/apache-php-base 
 
-([Docker Hub](https://hub.docker.com/r/phase2/apache-php-base/)) ([Repo](https://bitbucket.org/phase2tech/docker-apache-php-base))
+([Docker Hub](https://hub.docker.com/r/outrigger/apache-php-base/)) ([Repo](https://github.com/phase2/docker-apache-php-base))
 
-A base image for phase2/apache-php. Includes Apache and a default VirtualHost configured with a proxy to PHP-FPM. It 
+A base image for outrigger/apache-php. Includes Apache and a default VirtualHost configured with a proxy to PHP-FPM. It 
 does not include the php runtime, that is handed in the extension image(s).
 
 ### outrigger/build 
@@ -58,38 +58,38 @@ It also contains some extras you may need to work with Drupal, including use of 
 [Drupal Console](https://drupalconsole.com/), [Grunt Drupal Tasks](https://github.com/phase2/grunt-drupal-tasks) and 
 [Pattern Lab Starter](https://github.com/phase2/pattern-lab-starter).
 
-### phase2/mariadb 
+### outrigger/mariadb
 
-([Docker Hub](https://hub.docker.com/r/phase2/mariadb/)) ([Repo](https://bitbucket.org/phase2tech/docker-mariadb))
+([Docker Hub](https://hub.docker.com/r/outrigger/mariadb/)) ([Repo](https://github.com/phase2/docker-mariadb))
 
 MariaDB image for MySQL based builds with confd templates for config
 
-### phase2/memcache 
+### outrigger/memcache
 
-([Docker Hub](https://hub.docker.com/r/phase2/memcache/)) ([Repo](https://bitbucket.org/phase2tech/docker-memcache))
+([Docker Hub](https://hub.docker.com/r/outrigger/memcache/)) ([Repo](https://github.com/phase2/docker-memcache))
 
 Memcache image with configurable settings
 
-### phase2/redis 
+### outrigger/redis
 
-([Docker Hub](https://hub.docker.com/r/phase2/redis/)) ([Repo](https://bitbucket.org/phase2tech/docker-redis))
+([Docker Hub](https://hub.docker.com/r/outrigger/redis/)) ([Repo](https://github.com/phase2/docker-redis))
 
 Redis image with a confd template for redis.conf
 
-### phase2/node 
+### outrigger/node 
 
-([Docker Hub](https://hub.docker.com/r/phase2/node/)) ([Repo](https://bitbucket.org/phase2tech/docker-node))
+([Docker Hub](https://hub.docker.com/r/outrigger/node/)) ([Repo](https://github.com/phase2/docker-node))
 
 Node image 
 
-### phase2/varnish 
+### outrigger/varnish 
 
-([Docker Hub](https://hub.docker.com/r/phase2/varnish/)) ([Repo](https://bitbucket.org/phase2tech/docker-varnish))
+([Docker Hub](https://hub.docker.com/r/outrigger/varnish/)) ([Repo](https://github.com/phase2/docker-varnish))
 
 Varnish container with fancy environment variables for easy configuration
 
-### phase2/jenkins-docker 
+### outrigger/jenkins-docker 
 
-([Docker Hub](https://hub.docker.com/r/phase2/jenkins-docker/)) ([Repo](https://bitbucket.org/phase2tech/docker-jenkins-docker))
+([Docker Hub](https://hub.docker.com/r/outrigger/jenkins-docker/)) ([Repo](https://github.com/phase2/docker-jenkins-docker))
 
 Jenkins image that is built to be able to run Docker commands and launch containers. Docker-inception.
