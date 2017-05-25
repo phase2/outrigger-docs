@@ -18,6 +18,7 @@ pages:
     - Common Setup: 'project-setup/common-setup.md'
     - New Projects: 'project-setup/new-projects.md'
     - Existing Projects: 'project-setup/existing-projects.md'
+    - Filesystem Sync: 'project-setup/filesystem-sync.md'
     - Docker Images: 'project-setup/docker-images.md'
   - Common Tasks:
     - Starting your project containers: 'common-tasks/starting-your-project-containers.md'
