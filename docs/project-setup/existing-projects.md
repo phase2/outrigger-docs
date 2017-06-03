@@ -70,7 +70,7 @@ documentation on volume mount specifications. For example:
 
     .:/var/www
 
-If filesystem performance for builds or filesystem notifcations for watches are what you need, check out the 
+If filesystem performance for builds or filesystem notifications for watches are what you need, check out the 
 [Filesystem Sync](./filesystem-sync.md) documentation to guide you through setup.
 
 ## Persistent Data Storage

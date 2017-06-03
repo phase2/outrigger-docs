@@ -10,7 +10,7 @@ a process in your container to rebuild or update compiled project assets when mo
 due to local file editing in your IDE.
 
 In order to better support these types of operations, Outrigger provides support for multi-directional filesystem syncing 
-(which includes filesystem notifications) using `unison`.  Your project root folder is sync'd via `unison` into a sync 
+(which includes filesystem notifications) using `unison`.  Your project root folder is synced via `unison` into a sync 
 container and exposed as a Docker Volume to the rest of your application. This volume is then used as your mount point 
 instead of the NFS share and allows nearly native filesystem performance and features.
 
@@ -31,7 +31,7 @@ to take full advantage of `unison` syncing.
 To setup `unison` sync for your containers you will need to [reference an external volume](https://docs.docker.com/compose/compose-file/#volume-configuration-reference) 
 in your `docker-compose.yml` and use that external volume in the mount specification for any services that need to 
 reference the same set of files to ensure all containers stay in sync. Also specifying the sync volume in your `build.yml`
-file for any containers that reference your codebase will have a considerable performance improvement.
+file for any containers that reference your code base will have a considerable performance improvement.
 
 **Add the volume spec to your compose file**
 

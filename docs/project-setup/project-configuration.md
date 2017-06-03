@@ -4,7 +4,7 @@ Projects can have a local `.outrigger.yml` file included in their project to cus
 be done to add to the developer experience of the project, or to capture project specifics / intricacies in a place that
 is consistent for all team members.
 
-`.outrigger.yml` is usually placed in the project root and can contain configuration to customise the `rig project run` 
+`.outrigger.yml` is usually placed in the project root and can contain configuration to customize the `rig project run` 
 and `rig project sync` commands.  Below is a sample configuration file with comments to describe the various configuration options.
 
 ```yaml
@@ -41,7 +41,7 @@ scripts:
 sync:
   # This is the name of the external volume to use (optional). Needs to match volume name in Docker Compose. 
   volume: project-sync
-  # These ignores will be added to unison and not sync'd between local and project volume
+  # These ignores will be added to unison and not synced between local and project volume
   ignores:
     - "Name .git"
     - "Path build/tmp"

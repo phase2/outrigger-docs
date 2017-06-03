@@ -37,8 +37,8 @@ of the Host Machine, but execute that code within the environment of the running
 
 There are some drawbacks to using the NFS Filesystem so your second option is to use a 
 [Data Volume](https://docs.docker.com/engine/tutorials/dockervolumes/) to hold a mirror of your
-codebase and user Outrigger's [Filesystem Sync](filesystem-sync.md) capabilities to automatically
-keep it in sync with your local codebase. There are several advantages to this approach detailed
+code base and user Outrigger's [Filesystem Sync](filesystem-sync.md) capabilities to automatically
+keep it in sync with your local code base. There are several advantages to this approach detailed
 on the filesystem sync page at the cost of a slightly more complex setup. Outrigger helps manage
 the creation and syncing of the data volume to minimize this complexity.
 
@@ -64,7 +64,6 @@ lives on the Host Machine.
     are able to be changed at runtime but typically do not persist. When the container is stopped and 
     run again it "boots" the files that were built into the original image. The volume at `/data` (mentioned 
     above) is a persistent volume that you can use and Docker Data Volumes represent another.
-
 
     Outrigger helps maintain the contents of the `/data` directory between upgrades of your Docker
     Host Virtual Machine though occasional maintenance to remove old project data will be needed.
