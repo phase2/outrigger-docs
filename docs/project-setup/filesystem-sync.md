@@ -2,15 +2,15 @@
 
 The default NFS filesystems that Outrigger sets up provides easy sharing of code and files with your project containers. 
 However, NFS can be slow when writing, reading, or scanning thousands of files when compared to native filesystem performance. 
-Some modern tool kits and package managers favor large numbers of small files and libraries. Maintaining high performance 
+Some modern tool kits and package managers favor large numbers of small files and libraries so maintaining high performance 
 of a build becomes challenging when your code base is on a volume mounted NFS share.
 
-NFS also has the downside of not propagating filesystem modification events, which can be problematic if you wanted to have
-a process in a container monitor your files and run a process to rebuild or update when modification notifications are triggered
+NFS also has the downside of not propagating filesystem modification events. This can be problematic if you want to run
+a process in your container to rebuild or update compiled project assets when modification notifications are triggered
 due to local file editing in your IDE.
 
 In order to better support these types of operations, Outrigger provides support for multi-directional filesystem syncing 
-(which includes filesystem notifications) using `unison`.  Your project root folder is sync'd via `unison` into a sync 
+(which includes filesystem notifications) using `unison`.  Your project root folder is synced via `unison` into a sync 
 container and exposed as a Docker Volume to the rest of your application. This volume is then used as your mount point 
 instead of the NFS share and allows nearly native filesystem performance and features.
 
@@ -31,7 +31,7 @@ to take full advantage of `unison` syncing.
 To setup `unison` sync for your containers you will need to [reference an external volume](https://docs.docker.com/compose/compose-file/#volume-configuration-reference) 
 in your `docker-compose.yml` and use that external volume in the mount specification for any services that need to 
 reference the same set of files to ensure all containers stay in sync. Also specifying the sync volume in your `build.yml`
-file for any containers that reference your codebase will have a considerable performance improvement.
+file for any containers that reference your code base will have a considerable performance improvement.
 
 **Add the volume spec to your compose file**
 
@@ -61,7 +61,7 @@ services:
 ## Start it up
 
 From your project root run the command `rig project sync:start` (there is also an alias `rig project sync`) to get going.  
-With the above configuration you should be up an running. The initial sync can take a few seconds depending on the size
+With the above configuration you should be up and running. The initial sync can take a few seconds depending on the size
 of your project folder. You will see a progress indicator that will let you know when the initial sync is finished and 
 things are ready to use.
 

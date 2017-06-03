@@ -8,10 +8,10 @@ environments are based upon Docker and Outrigger helps you tie the pieces
 together to provide a stable foundation for project work that includes:
 
 * A Docker Machine based VM
-* DNS services
+* [DNS services](common-tasks/dns-resolution.md)
 * Network routing
-* High speed filesystems
-* Persistent data storage
+* [High speed filesystems](project-setup/key-concepts.md#project-code)
+* [Persistent data storage](project-setup/key-concepts.md#persistent-data-volume)
 
 The Outrigger approach is to configure and use standard Docker tools. This allows
 you the option to learn these tools when you want to and provides the
