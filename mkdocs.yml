@@ -13,11 +13,13 @@ pages:
     - Mac Installation: 'getting-started/mac-installation.md'
     - Linux Installation: 'getting-started/linux-installation.md'
     - Windows Installation: 'getting-started/windows-installation.md'
-    - How to contribute: 'getting-started/how-to-contribute.md'
+    - First Steps: 'getting-started/first-steps.md'
   - Project Setup:
-    - Common Setup: 'project-setup/common-setup.md'
+    - Key Concepts: 'project-setup/key-concepts.md'
     - New Projects: 'project-setup/new-projects.md'
     - Existing Projects: 'project-setup/existing-projects.md'
+    - Project Configuration: 'project-setup/project-configuration.md'
+    - Filesystem Sync: 'project-setup/filesystem-sync.md'
     - Docker Images: 'project-setup/docker-images.md'
   - Common Tasks:
     - Starting your project containers: 'common-tasks/starting-your-project-containers.md'
@@ -42,6 +44,7 @@ pages:
     - General: 'faq/general.md'
     - Troubleshooting: 'faq/troubleshooting.md'
     - Docker for Mac: 'faq/docker-for-mac.md'
+    - How to contribute: 'faq/how-to-contribute.md'
   - Appendix:
     - Glossary: 'appendix/glossary.md'
     - Architecture: 'appendix/architecture.md'

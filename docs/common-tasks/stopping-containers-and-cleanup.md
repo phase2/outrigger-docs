@@ -22,4 +22,4 @@ If you only want to clean up project specific stopped containers, you can run: `
 
 When you are finished with a project, if you used any persistent data storage you'll want to run a command to clean it 
 up. The exact directory to request removal from will depend on your project (see suggested directory naming guidelines in 
-[Common Setup](../project-setup/common-setup.md)): `docker ssh dev sudo rm -rf /data/[project]/`
+[Key Concepts](../project-setup/key-concepts.md#persistent-data-volume)): `docker ssh dev sudo rm -rf /data/[project]/`
