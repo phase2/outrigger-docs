@@ -1,10 +1,8 @@
 # Filesystem Sync
 
-Outrigger uses [Unison](https://github.com/bcpierce00/unison) to provide high-performance, bi-directional file synchronization between your local operating system and Docker containers.
+Outrigger uses [Unison](https://github.com/bcpierce00/unison) to provide high-performance, bi-directional file synchronization between your local operating system and Docker containers. This is not the only means of sharing code or data with application containers, but it is the recommended approach for sharing files that must also be efficiently available to developers and their local tools (e.g., IDEs).
 
-From the root of your project, all the files are synced via a dedicated container and exposed as a named [Docker Volume](https://docs.docker.com/engine/tutorials/dockervolumes/) to the rest of your application. This volume is used as the file "source" for a volume mount to allow nearly native filesystem performance and features.
-
-This is not used as the only means of sharing code or data into the filesystem, but it is the recommended approach for sharing primary application code that must also be readily available to developers and their local tools (e.g., IDEs).
+With Unison, all the files from the root of your project are synced via a dedicated container and exposed as a named [Docker Volume](https://docs.docker.com/engine/tutorials/dockervolumes/) to the rest of your application. This volume is used as the file "source" for a volume mount to allow nearly native filesystem performance and features.
 
 For more on why Outrigger introduced Unison, jump down to [Why Sync Instead of NFS?](#why-sync-instead-of-nfs)
 
@@ -12,7 +10,9 @@ For more on why Outrigger introduced Unison, jump down to [Why Sync Instead of N
 
 To setup `unison` sync for your containers you will need to [reference an external volume](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
 in your `docker-compose.yml` and use that external volume in the mount specification for any services that need to
-reference the same set of files. Using the same volume will ensure all containers stay in sync. This includes specifying that volume for your [Build container](/common-tasks/using-the-build-container), if you are using that (via build.yml).
+reference the same set of files.
+
+Since volumes are global within your Docker host, the name of this external volume should be namespaced to your project. The convention is to use `projectname-sync` as the volume name. Using the same volume will ensure all containers stay in sync. This includes specifying that volume for your [Build container](/common-tasks/using-the-build-container), if you are using that (via build.yml).
 
 ### Add the volume to your docker-compose file
 
@@ -20,7 +20,7 @@ Note that volume definitions are available as of docker-compose schema v2. `volu
 
 ```yaml
 volumes:
-  project-sync:
+  projectname-sync:
     external: true
 ```
 
@@ -38,7 +38,7 @@ services:
   build:
     image: outrigger/build:php71
     volumes:
-      - project-sync:/var/www
+      - projectname-sync:/var/www
 ```
 
 ## Managing the File Sync Process
@@ -99,9 +99,9 @@ services:
 services:
   www:
     volumes:
-      - project-sync:/var/www
+      - projectname-sync:/var/www
 volumes:
-  project-sync:
+  projectname-sync:
     external: true
 ```
 
