@@ -35,6 +35,8 @@ file for any containers that reference your code base will have a considerable p
 
 **Add the volume spec to your compose file**
 
+This needs to be placed at the root level. It cannot be a child of `services`.
+
 ```yaml
 volumes:
   project-sync:
