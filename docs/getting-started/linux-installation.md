@@ -159,7 +159,7 @@ WantedBy=multi-user.target
 - Ensure Docker is registered with systemctl
     - `systemctl enable docker`
 - Register dnsdock service: 
-    - `systemctl enable dnsdock && systemctl daemon-reoload`
+    - `systemctl enable dnsdock && systemctl daemon-reload`
 - Now you can start/stop the dnsdock service with 
     - `systemctl [start|stop] dnsdock`
 - You can also check its status 
