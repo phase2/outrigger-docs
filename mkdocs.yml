@@ -34,7 +34,7 @@ pages:
     - Accessing logs: 'common-tasks/accessing-logs.md'
     - Accessing containers from other VMs: 'common-tasks/inter-vm-communication.md'
     - SSH Keys for private repos: 'common-tasks/ssh-keys-for-private-repos.md'
-    - Seting up mail: 'common-tasks/setting-up-mail.md'
+    - Setting up mail: 'common-tasks/setting-up-mail.md'
     - DNS Resolution: 'common-tasks/dns-resolution.md'
     - Upgrading Rig: 'common-tasks/upgrading-rig.md'
     - Multiple Docker Machines: 'common-tasks/multiple-docker-machines.md'
