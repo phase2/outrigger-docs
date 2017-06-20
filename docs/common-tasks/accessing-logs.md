@@ -6,6 +6,8 @@ When you start a your containers via `docker-compose up` all of the defined serv
 log output to stdout/stderr within each container will be output the console.  Each entry will be prefixed with the name 
 of the running container to identify the source of the log message.
 
-If log output is not coming directly to the console you can 
+If log output is not coming directly to the console (for example, if you started your containers via `docker-compose up -d` to detach them) you can still
 [SSH into the container](../common-tasks/ssh-into-a-container.md) and browse the file system for logs. Most common 
-services will provide some log output in `/var/log`.
+services will provide some log output in `/var/log`. 
+
+Alternatively, another option is to run the `docker logs <containername>` command.
