@@ -31,7 +31,7 @@ add your desired keys to it.
 # Agent will need to be restarted and have key(s) re-added to it any time your
 # docker host is restarted.
 #
-version: '2.1'
+version: '3.2'
 
 services:
   # use via docker-compose -f ssh.yml up [-d] ssh-agent
@@ -42,7 +42,6 @@ services:
       - ssh:/ssh
 
   # use via docker-compose -f ssh.yml run --rm ssh-add $HOME/.ssh/name_of_desired_key
-  # use as many times as needed to add the desired keys
   ssh-add:
     image: whilp/ssh-agent:latest
     entrypoint: [ "ssh-add" ]
@@ -59,27 +58,37 @@ volumes:
 Any container you want to connect to the SSH agent needs to set the environmental
 variable SSH_AUTH_SOCK to /ssh/auth/sock and mount the ssh volume at path /ssh.
 
-Here is an example build.ssh.yml file which extends the build.yml file's base
-container and adds the ssh agent ability.
+Here is an example ssh.overrides.yml file which can be combined with the build.yml
+file's base container and adds the ssh agent ability. To use this file you would
+run `docker-compose -f build.yml -f ssh.overrides.yml run --rm DESIRED_SERVICE`
+
+!!! note "Overrides and extends"
+    Overrides do not carry through to services extending an overridden service.
+    The example below demonstrates that one needs to define the override for each
+    service where it should apply even though in a typical build.yml file
+    the cli service is a descendant of the base service. 
 
 ```
-build.ssh.yml
+# ssh.overrides.yml
+
 version: '2.1'
 
 services:
-  base:
-    extends:
-      file: build.yml
-      service: base
-    volumes_from:
-      # note that this is using the container name so if you choose a different
-      # one they must be kept in sync
-      - container:ssh-agent
+  cli:
+    volumes:
+      - ssh:/ssh
     environment:
       SSH_AUTH_SOCK: /ssh/auth/sock
+  base:
+    volumes:
+      - ssh:/ssh
+    environment:
+      SSH_AUTH_SOCK: /ssh/auth/sock
+volumes:
+  ssh:
 ```
 
 ### More Resources
 
-Additional information, including ways to have non root container processes access
+Additional information, including ways to have non-root container processes access
 the authorization socket can be found in the [whilp/ssh-agent README](https://github.com/whilp/ssh-agent) image.
