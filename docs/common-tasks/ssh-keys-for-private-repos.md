@@ -15,14 +15,20 @@ and it will be processed accordingly.
 For interactive operations, such as use of the build container, passphrase protected
 keys do not pose a challenge as you can enter the passphrase when prompted. Services
 like Jenkins, however, can prove problematic. A solution to this is to use a container
-running an ssh agent with your key added and unlocked. Your container will be able
-to connect with the ssh agent via the use of a shared volume and the SSH_AUTH_SOCK
+running an SSH agent with your key added and unlocked. Your container will be able
+to connect with the SSH agent via the use of a shared volume and the SSH_AUTH_SOCK
 variable that points to it.
 
 ### SSH Agent Container
 
-The following is an ssh.yml file that can help set up the necessary containers and
-add your desired keys to it.
+The following is an docker compose file, ssh.yml, with services defined to help run
+the necessary container for the agent and add your desired keys. It is set up for a
+single SSH agent to share with all of your projects. If you prefer project specific
+SSH agents, remove the `external: true` declaration in all sample files.
+
+In order to have a single agent for all projects, first create a named volume
+using `docker volume create --name=ssh`. This only needs to be done once and you'll
+be prompted to do so if you forget.
 
 ```
 # ssh.yml
@@ -51,6 +57,7 @@ services:
 
 volumes:
   ssh:
+    external: true
 ```
 
 ### Connecting to the SSH Agent from other containers
@@ -58,9 +65,9 @@ volumes:
 Any container you want to connect to the SSH agent needs to set the environmental
 variable SSH_AUTH_SOCK to /ssh/auth/sock and mount the ssh volume at path /ssh.
 
-Here is an example ssh.overrides.yml file which can be combined with the build.yml
-file's base container and adds the ssh agent ability. To use this file you would
-run `docker-compose -f build.yml -f ssh.overrides.yml run --rm DESIRED_SERVICE`
+Here is an example ssh.overrides.yml file which shows how to add SSH agent access
+to services from the [build container](using-the-build-container.md).
+To use this file run `docker-compose -f build.yml -f ssh.overrides.yml run --rm DESIRED_SERVICE`
 
 !!! note "Overrides and extends"
     Overrides do not carry through to services extending an overridden service.
@@ -86,7 +93,11 @@ services:
       SSH_AUTH_SOCK: /ssh/auth/sock
 volumes:
   ssh:
+    external: true
 ```
+
+The SSH agent configuration can also be placed into your build.yml file directly
+if it is relevant for all team members.
 
 ### More Resources
 
