@@ -10,12 +10,12 @@
 
 [Homebrew Website](http://brew.sh/)
 
-If Homebrew is already installed, then be sure to do a `brew update` 
+If Homebrew is already installed, then be sure to do a `brew update`
 
 ### Tap the Outrigger repository
 
 `brew tap phase2/outrigger`
-   
+
 ### Install Outrigger (and dependencies)
 
 `brew install phase2/outrigger/rig`
@@ -24,7 +24,7 @@ This will install the `rig` binary as well the Docker and other dependencies.
 
 ### Create the Docker Host
 
-Once everything checks out, run the following command to create a new docker host. 
+Once everything checks out, run the following command to create a new docker host.
 (You will likely be prompted for your admin password)
 
 `rig start`
@@ -37,22 +37,22 @@ Options on `rig`:
 
 Options on the `start` command:
 
-* **driver:** The driver to create the Docker Machine with. Choices are:
+* **--driver:** The driver to create the Docker Machine with. Choices are:
     * `virtualbox` - default
     * `vmwarefusion`
     * `xhyve`
-* **cpuCount:** The number of virtual CPU you want to allocate to this VM. Defaults to 2
-* **memSize:** The size memory you want to configure for this VM, in Megabytes. Defaults to 4096
-* **diskSize:** The size drive you want to configure for this VM, in Gigabytes. Defaults to 40
+* **--cpu-count** The number of virtual CPU you want to allocate to this VM. Defaults to 2
+* **--memory-size** The size memory you want to configure for this VM, in Megabytes. Defaults to 4096
+* **--disk-size** The size drive you want to configure for this VM, in Gigabytes. Defaults to 40
 
 ### Configure your shell to set Outrigger Docker environment
 
 To configure the shell with the proper Outrigger environment, run the following command
 after the docker host has started from the previous step.
-   
+
 `eval "$(rig config)"`
 
-For convenience, you should make this automatic on every terminal you launch. To do that 
+For convenience, you should make this automatic on every terminal you launch. To do that
 add the following to your `.bash_profile`, `.zshrc` or equivalent:
 
 ```bash
@@ -62,7 +62,7 @@ alias re='eval "$(rig config)"'
 ```
 
 !!! note "Running rig config"
-    Even with automatic execution in your shell, this command must be run in any existing 
+    Even with automatic execution in your shell, this command must be run in any existing
     terminal windows after `rig start` or `rig restart` commands. To support that
     see the `re` alias in the shell init file above. Just run `re` after a `rig start`
 
