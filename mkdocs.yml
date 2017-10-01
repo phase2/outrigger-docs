@@ -30,7 +30,7 @@ pages:
     - SSH into a container: 'common-tasks/ssh-into-a-container.md'
     - Changing container configuration: 'common-tasks/customizing-container-configuration.md'
     - Using watches: 'common-tasks/using-watches.md'
-    - Using Xdebug with PHPStorm: 'common-tasks/using-xdebug-with-phpstorm.md'
+    - Using Xdebug with Outrigger: 'common-tasks/using-xdebug-with-outrigger.md'
     - Accessing logs: 'common-tasks/accessing-logs.md'
     - Accessing containers from other VMs: 'common-tasks/inter-vm-communication.md'
     - SSH Keys for private repos: 'common-tasks/ssh-keys-for-private-repos.md'
