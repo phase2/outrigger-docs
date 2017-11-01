@@ -26,66 +26,37 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 ```
 1. Set up the docker0 network as trusted
     - `sudo firewall-cmd --zone=trusted --add-interface=docker0 && sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent`
-1. Start the docker daemon
-    - `sudo systemctl start docker`
+1. Restart the docker daemon
+    - `sudo systemctl restart docker`
 
 ## Linux installation on Ubuntu/Debian
 
 1. [Install Docker for Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or 
 [Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
-
-**If using Upstart**
-
-- Set the DNS configuration for dnsdock, as well as known RFC-1918 address space
-    - Please note that the following command will over-write your existing Docker daemon configuration file.  Please 
-    set the -dns=172.17.0.1 option manually as an alternative
-    - `echo 'DOCKER_OPTS="-dns=172.17.0.1"' | sudo tee /etc/default/docker`
-- Start the docker daemon
-    - `sudo start docker`
-
-**If using Systemd**
-
-- Set the DNS configuration for Docker
+1. Set the DNS configuration for Docker
     - We need to modify the command that docker uses within systemd
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
-    - In that file put something like the following:    
-    
+    - In that file put something like the following:      
 ```bash
 [Service]
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 ```
+1. Restart the docker daemon
+    - `sudo systemctl restart docker`
 
-## Linux DNS configuration options
+## Automated Linux DNS configuration options
 
-### Method 1: dnsmasq via NetworkManager
+Outrigger will help automate the setup of DNS (via `rig start` and `rig dns`) if you are using one of the following options for name resolution
 
-This method works well with no other needed software provided that you have unfettered access to your system's 
-configuration, and are using NetworkManager to maintain your networking stack
+1. dnsmasq via NetworkManager
+1. libnss-resolver
 
-1. Add the line dns=dnsmasq to /etc/NetworkManager/NetworkManager.conf under the [main] configuration stanza. This will 
-cause NetworkManager to spawn and use a dnsmasq process for all name resolution. If you already have a local configuration, 
-ensure that it is not configured to start on system boot.
-1. Add a single rule to direct all DNS lookups for .vm addresses to the 172.17.0.1 address.
-    - `echo 'server=/vm/172.17.0.1' | sudo tee /etc/NetworkManager/dnsmasq.d/dnsdock.conf`
-1. Restart NetworkManager, either through systemd, or by simply rebooting.  To restart via systemd:
-    - `systemctl restart NetworkManager`
-1. Run the dnsdock container
+## Other DNS resolution options
 
-```bash
-docker run -d \
-  --name=dnsdock \
-  --restart=always \
-  -l com.dnsdock.name=dnsdock \
-  -l com.dnsdock.image=outrigger \
-  -p 172.17.0.1:53:53/udp \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
-```
-
-### Method 2: dnsdock as main resolver
+### DNSDock as main resolver
 
 This method will probably only work well if this is a fixed computer or server with a consistent single upstream DNS 
 server. If you meet these criteria, you can very easily use this to set up .vm resolution for containers an delegate the 
@@ -110,30 +81,7 @@ docker run -d \
 based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as 
 the first 'nameserver' line in your /etc/resolv.conf file.
 
-### Method 3: libnss-resolver
-
-libnss-resolver is an app that adds Mac-style /etc/resolver/$FQDN files to the Linux NSS resolution stack to query a 
-different DNS server for any .vm address.  It may be the easiest option for most installations.
-
-There are releases for Fedora 20, Ubuntu 12.04 and Ubuntu 14.04.
-
-1. Install [libnss-resolver](https://github.com/azukiapp/libnss-resolver/releases)
-1. Set up .vm hostname resolution
-    - `echo 'nameserver 172.17.0.1:53' | sudo tee /etc/resolver/vm`
-1. Run the dnsdock container
-
-```bash
-docker run -d \
-  --name=dnsdock \
-  --restart=always \
-  -l com.dnsdock.name=dnsdock \
-  -l com.dnsdock.image=outrigger \
-  -p 172.17.0.1:53:53/udp \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
-```
-
-## Running dnsdock as a service
+#### Running dnsdock as a service
 
 - Create the file `/etc/systemd/system/dnsdock.service` with the following contents
 
