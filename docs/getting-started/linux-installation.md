@@ -6,15 +6,15 @@ how to run Outrigger projects on Linux.
 ## Linux Requirements
 
 1. The dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers
-1. Use of one of three options to forward DNS queries to the dnsdock container (see 
+2. Use of one of three options to forward DNS queries to the dnsdock container (see 
 [Linux DNS configuration options](#markdown-header-linux-dns-configuration-options) below)
 
 ## Linux installation on Fedora/Centos
 
 1. [Install Docker for Fedora](https://docs.docker.com/engine/installation/linux/fedora/) or 
 [Install Docker for CentOS](https://docs.docker.com/engine/installation/linux/centos/)
-1. [Install Docker Compose](https://docs.docker.com/compose/install/)
-1. Set the DNS configuration for Docker
+2. [Install Docker Compose](https://docs.docker.com/compose/install/)
+3. Set the DNS configuration for Docker
     - We need to modify the command that docker uses within systemd
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
@@ -24,17 +24,17 @@ how to run Outrigger projects on Linux.
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 ```
-1. Set up the docker0 network as trusted
+4. Set up the docker0 network as trusted
     - `sudo firewall-cmd --zone=trusted --add-interface=docker0 && sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent`
-1. Restart the docker daemon
+5. Restart the docker daemon
     - `sudo systemctl restart docker`
 
 ## Linux installation on Ubuntu/Debian
 
 1. [Install Docker for Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or 
 [Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
-1. [Install Docker Compose](https://docs.docker.com/compose/install/)
-1. Set the DNS configuration for Docker
+2. [Install Docker Compose](https://docs.docker.com/compose/install/)
+3. Set the DNS configuration for Docker
     - We need to modify the command that docker uses within systemd
     - `sudo mkdir /etc/systemd/system/docker.service.d`
     - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
@@ -44,17 +44,26 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 ```
-1. Restart the docker daemon
+4. Restart the docker daemon
     - `sudo systemctl restart docker`
 
 ## Automated Linux DNS configuration options
 
-Outrigger will help automate the setup of DNS (via `rig start` and `rig dns`) if you are using one of the following options for name resolution
+Outrigger will help automate the setup of DNS (via `rig start` and `rig dns`) if you are using 
+one of the following options for name resolution:
 
 1. dnsmasq via NetworkManager
-1. libnss-resolver
+2. libnss-resolver
 
 ## Other DNS resolution options
+
+DNSDock is the service used for Outrigger service DNS resolution. If you use different services to 
+manage DNS resolution in your operating system, then you will need to configure it to use `172.17.0.1`
+or whatever the Docker bridge network gateway IP address to resolve for `.vm` addresses (or just generally
+lookup names there if none of the other resolvers find a match).  Alternatively, you can use DNSDock
+as the main resolver for your operating system and for any addresses that DNSDock cannot resolve it will 
+delegate to `8.8.8.8` by default or it can be customized with `RIG_NAMESERVERS` or by passing one or more
+`--nameserver` options to the DNSDock container.
 
 ### DNSDock as main resolver
 
@@ -76,8 +85,7 @@ docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ```
-
-1. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
+2. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
 based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as 
 the first 'nameserver' line in your /etc/resolv.conf file.
 
