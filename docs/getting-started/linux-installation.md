@@ -57,13 +57,15 @@ one of the following options for name resolution:
 
 ## Other DNS resolution options
 
-DNSDock is the service used for Outrigger service DNS resolution. If you use different services to 
-manage DNS resolution in your operating system, then you will need to configure it to use `172.17.0.1`
-or whatever the Docker bridge network gateway IP address to resolve for `.vm` addresses (or just generally
-lookup names there if none of the other resolvers find a match).  Alternatively, you can use DNSDock
-as the main resolver for your operating system and for any addresses that DNSDock cannot resolve it will 
-delegate to `8.8.8.8` by default or it can be customized with `RIG_NAMESERVERS` or by passing one or more
-`--nameserver` options to the DNSDock container.
+If you use alternative services to manage DNS resolution, then you will need to configure the Docker 
+bridge network gateway IP address to resolve .vm addresses. This is usually 172.17.0.1, but can be 
+discovered with `docker network inspect bridge --format {{(index .IPAM.Config 0).Gateway}}`.  
+
+Alternatively, you can use DNSDock as the main resolver for your operating system and configure 
+fallback resolvers for any addresses that DNSDock cannot resolve. By default, DNSDock will delegate to 
+`8.8.8.8`, but it can be customized by specifying a comma-separarted list of IP addresses in 
+the `RIG_NAMESERVERS` environment variable or by passing one or more `--nameserver` flags in the 
+DNSDock container startup command.
 
 ### DNSDock as main resolver
 
