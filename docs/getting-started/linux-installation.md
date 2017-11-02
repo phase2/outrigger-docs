@@ -58,20 +58,18 @@ one of the following options for name resolution:
 ## Other DNS resolution options
 
 If you use alternative services to manage DNS resolution, then you will need to configure the Docker 
-bridge network gateway IP address to resolve .vm addresses. This is usually 172.17.0.1, but can be 
+bridge network gateway IP address to resolve `.vm` addresses. This is usually `172.17.0.1`. The IP can be 
 discovered with `docker network inspect bridge --format {{(index .IPAM.Config 0).Gateway}}`.  
-
-Alternatively, you can use DNSDock as the main resolver for your operating system and configure 
-fallback resolvers for any addresses that DNSDock cannot resolve. By default, DNSDock will delegate to 
-`8.8.8.8`, but it can be customized by specifying a comma-separarted list of IP addresses in 
-the `RIG_NAMESERVERS` environment variable or by passing one or more `--nameserver` flags in the 
-DNSDock container startup command.
 
 ### DNSDock as main resolver
 
-This method will probably only work well if this is a fixed computer or server with a consistent single upstream DNS 
-server. If you meet these criteria, you can very easily use this to set up .vm resolution for containers an delegate the 
-rest to your normal DNS server.
+You can use DNSDock as the main resolver for your operating system and configure fallback resolvers 
+for any addresses that DNSDock cannot resolve. By default, DNSDock will delegate to `8.8.8.8`, but 
+it can be customized by passing one or more `--nameserver` flags in the DNSDock container startup command.
+
+This method will probably only work well if you have a consistent single upstream DNS server and does not
+need to change often. For example, connecting to a VPN can configure new DNS resolvers, so if your computer
+needs to connect to a VPN, this may not be the right solution for you. 
 
 This example assumes that the upstream DNS server for a Linux workstation is 192.168.0.1.
 
@@ -85,7 +83,7 @@ docker run -d \
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
+  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm --nameserver=192.168.0.1
 ```
 2. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
 based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as 
@@ -105,7 +103,7 @@ Requires=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill dnsdock
 ExecStartPre=-/usr/bin/docker rm dnsdock
-ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64  --domain=vm
+ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
 ExecStop=/usr/bin/docker stop dnsdock
 Restart=always
 RestartSec=30
