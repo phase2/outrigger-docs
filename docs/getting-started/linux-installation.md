@@ -16,8 +16,8 @@ or grab the `linux-amd64.tar.gz` binary directly and install it in `/usr/local/b
 
 1. [Install Docker for Fedora](https://docs.docker.com/engine/installation/linux/fedora/) or 
 [Install Docker for CentOS](https://docs.docker.com/engine/installation/linux/centos/)
-1. [Install Docker Compose](https://docs.docker.com/compose/install/)
-1. Set the DNS configuration for Docker
+2. [Install Docker Compose](https://docs.docker.com/compose/install/)
+3. Set the DNS configuration for Docker
     - We need to add Docker daemon configuration
     - `sudo vi /etc/docker/daemon.conf`
     - In that file put (or integrate) the following:    
@@ -26,17 +26,17 @@ or grab the `linux-amd64.tar.gz` binary directly and install it in `/usr/local/b
     "dns": [ "172.17.0.1" ]
 }
 ```
-1. Set up the docker0 network as trusted
+4. Set up the docker0 network as trusted
     - `sudo firewall-cmd --zone=trusted --add-interface=docker0 && sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent`
-1. Restart the docker daemon
+5. Restart the docker daemon
     - `sudo systemctl restart docker`
 
 ## Linux installation on Ubuntu/Debian
 
 1. [Install Docker for Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or 
 [Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
-1. [Install Docker Compose](https://docs.docker.com/compose/install/)
-1. Set the DNS configuration for Docker
+2. [Install Docker Compose](https://docs.docker.com/compose/install/)
+3. Set the DNS configuration for Docker
     - We need to add Docker daemon configuration
     - `sudo vi /etc/docker/daemon.conf`
     - In that file put (or integrate) the following:    
@@ -45,7 +45,7 @@ or grab the `linux-amd64.tar.gz` binary directly and install it in `/usr/local/b
     "dns": [ "172.17.0.1" ]
 }
 ```
-1. Restart the docker daemon
+4. Restart the docker daemon
     - `sudo systemctl restart docker`
 
 ## Automated Linux DNS configuration options
@@ -80,11 +80,9 @@ docker run -d \
 
 1. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
 based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as 
-the first 'nameserver' line in your /etc/resolv.conf file.
-
-#### Running dnsdock as a service
-
-- Create the file `/etc/systemd/system/dnsdock.service` with the following contents
+the first 'nameserver' line in your `/etc/resolv.conf` file.
+2. Running dnsdock as a service
+    - Create the file `/etc/systemd/system/dnsdock.service` with the following contents
 
 ```bash
 [Unit]
@@ -105,13 +103,13 @@ RestartSec=30
 WantedBy=multi-user.target
 ```
 
-- Ensure Docker is registered with systemctl
+3. Ensure Docker is registered with systemctl
     - `systemctl enable docker`
-- Register dnsdock service: 
+4. Register dnsdock service: 
     - `systemctl enable dnsdock && systemctl daemon-reload`
-- Now you can start/stop the dnsdock service with 
+5. Now you can start/stop the dnsdock service with 
     - `systemctl [start|stop] dnsdock`
-- You can also check its status 
+6. You can also check its status 
     - `systemctl status dnsdock`
 
 ## Verifying DNS is working
