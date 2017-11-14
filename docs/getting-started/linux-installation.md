@@ -3,11 +3,14 @@
 When running Docker containers on Linux, it is not necessary to run the Docker Machine VM. The instructions here describe 
 how to run Outrigger projects on Linux.
 
+## Install Outrigger
+
+* Go to the [Outrigger Releases](https://github.com/phase2/rig/releases) page and download the `.rpm`, `.deb`, 
+or grab the `linux-amd64.tar.gz` binary directly and install it in `/usr/local/bin`
+
 ## Linux Requirements
 
-1. The dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers
-1. Use of one of three options to forward DNS queries to the dnsdock container (see 
-[Linux DNS configuration options](#markdown-header-linux-dns-configuration-options) below)
+1. For automated DNS resolution, the use of one of two options to resolve DNS queries to the dnsdock container
 
 ## Linux installation on Fedora/Centos
 
@@ -15,14 +18,13 @@ how to run Outrigger projects on Linux.
 [Install Docker for CentOS](https://docs.docker.com/engine/installation/linux/centos/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
 1. Set the DNS configuration for Docker
-    - We need to modify the command that docker uses within systemd
-    - `sudo mkdir /etc/systemd/system/docker.service.d`
-    - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
-    - In that file put something like the following:    
-```bash
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
+    - We need to add Docker daemon configuration
+    - `sudo vi /etc/docker/daemon.conf`
+    - In that file put (or integrate) the following:    
+```json
+{
+    "dns": [ "172.17.0.1" ]
+}
 ```
 1. Set up the docker0 network as trusted
     - `sudo firewall-cmd --zone=trusted --add-interface=docker0 && sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent`
@@ -35,14 +37,13 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 [Install Docker for Debian](https://docs.docker.com/engine/installation/linux/debian/)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
 1. Set the DNS configuration for Docker
-    - We need to modify the command that docker uses within systemd
-    - `sudo mkdir /etc/systemd/system/docker.service.d`
-    - `sudo vi /etc/systemd/system/docker.service.d/docker.conf`
-    - In that file put something like the following:      
-```bash
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
+    - We need to add Docker daemon configuration
+    - `sudo vi /etc/docker/daemon.conf`
+    - In that file put (or integrate) the following:    
+```json
+{
+    "dns": [ "172.17.0.1" ]
+}
 ```
 1. Restart the docker daemon
     - `sudo systemctl restart docker`
@@ -51,10 +52,10 @@ ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1
 
 Outrigger will help automate the setup of DNS (via `rig start` and `rig dns`) if you are using one of the following options for name resolution
 
-1. dnsmasq via NetworkManager
-1. libnss-resolver
+1. [dnsmasq via NetworkManager](https://wiki.archlinux.org/index.php/dnsmasq#NetworkManager)
+2. [libnss-resolver](https://github.com/azukiapp/libnss-resolver)
 
-## Other DNS resolution options
+## Manual DNS resolution options
 
 ### DNSDock as main resolver
 
@@ -127,7 +128,7 @@ Once you have your environment set up, you can use the following tests to ensure
     - Open a shell for a second test container
         - `docker run --rm -l com.dnsdock.name=test -l com.dnsdock.image=outrigger -it alpine sh`
     - From its prompt: 
-        - `ping dnsdock.outrigger.vm`
+        - `ping test.outrigger.vm`
         - You should get echo replies from a 172.17.0.0/16 address
 
 ## Troubleshooting
