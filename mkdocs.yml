@@ -47,6 +47,7 @@ pages:
     - How to contribute: 'faq/how-to-contribute.md'
   - Appendix:
     - Glossary: 'appendix/glossary.md'
+    - Return Codes: 'appendix/return-codes.md'
     - Architecture: 'appendix/architecture.md'
     - Background: 'appendix/background.md'
     - Library: 'appendix/library.md'
