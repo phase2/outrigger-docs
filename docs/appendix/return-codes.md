@@ -8,9 +8,9 @@ and error has occurred and can give an idea of what type of error was raised.
 
 `rig` exit codes used to indiciate certain conditions and are as follows:
 
-* `1` - Unexpected
+* `1` - Default
   * Returned when an uncaught error is raised and the program exited unexpectedly. This is
-  used by the underlying cli framework. Project scripts can may also return this code.
+  used by the underlying cli framework as well. Project scripts can may also return this code.
 * `12` - Environmental 
   * Returned when there is a problem with the execution environment and 
   the current command cannot continue. This is usually the result of the
