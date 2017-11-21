@@ -17,13 +17,13 @@ It can be useful to ensure everything is in a clean state. The following should 
 
 ## Ensure your images are up to date
 
-From time to time images are updated to fix bugs or add functionality. You won't automatically receive these updates but 
+From time to time images are updated to fix bugs or add functionality. You won't automatically receive these updates but
 you can fetch them when you hear new ones are available.
 
-`docker pull imagename` can be used if you want to update a specific image. For example, if you wanted to make sure you 
+`docker pull imagename` can be used if you want to update a specific image. For example, if you wanted to make sure you
 had the latest mariadb you'd run `docker pull phase2/mariadb`.
 
-`docker-compose pull` can be used within a project directory to make sure you've got the latest version of all images 
+`docker-compose pull` can be used within a project directory to make sure you've got the latest version of all images
 in the docker-compose.yml file.
 
 ## Configure Your Shell
@@ -46,14 +46,14 @@ Make sure your shell has the necessary environment variables by running:
 
 ## Reset everything
 
-If a problem continue to persists and the Docker Host is non-responsive, you may need to resort to the nuclear option of 
-blowing everything away and starting over. Note this is a **nuclear option** as even your persistent data area will be 
-removed if you don't back it up. If you have any data that needs to be maintained be sure to get a copy of it off of your 
+If a problem continue to persists and the Docker Host is non-responsive, you may need to resort to the nuclear option of
+blowing everything away and starting over. Note this is a **nuclear option** as even your persistent data area will be
+removed if you don't back it up. If you have any data that needs to be maintained be sure to get a copy of it off of your
 VM first with the scripts provided.
 
 To wipe everything out and start over
 
-1. First backup your existing data (if desired) by running `rig data-backup`. This will sync your entire `/data` 
+1. First backup your existing data (if desired) by running `rig data-backup`. This will sync your entire `/data`
 directory to your host machine.
 1. Then you can run `rig remove` This removes the broken Docker Host and it’s state, making way for a clean start.
 1. Next you can rebuild everything by running `rig start`. This will create you new Docker Host.
@@ -61,19 +61,19 @@ directory to your host machine.
 
 ## Files Not Found
 
-If you get messages about files not being found in the container that should be shared from your host computer, check the 
+If you get messages about files not being found in the container that should be shared from your host computer, check the
 following:
 
-1. Is the project checked out under the `/Users` folder? Only files under the `/Users` folder are shared into the 
+1. Is the project checked out under the `/Users` folder? Only files under the `/Users` folder are shared into the
 Docker Host (and thus containers) by default.
 1. Does the `docker-compose.yml` file have a volume mount set up that contains the missing files?
-1. Get shell in the Docker container via `docker exec -it <container name> /bin/bash` and check if the files are 
+1. Get shell in the Docker container via `docker exec -it <container name> /bin/bash` and check if the files are
 shared in the wrong place.
 1. Get shell in the Docker Machine with `docker-machine ssh dev` and check if you find the files under /Users.
 
 ## Image not found
 
-If you encounter the following error about the Docker image not being found when starting a project, it may indicate 
+If you encounter the following error about the Docker image not being found when starting a project, it may indicate
 that the image is private and your Docker client is not logged into a required private Docker Hub repository:
 
     Pulling repository phase2/privateimage
@@ -143,7 +143,7 @@ Devtools should now be able to start. Don't forget to run `eval "$(rig config)"`
 
 ## Containers Started but Service Not Available
 
-Your Docker Host is running, the project's containers are up, and command-line operations work fine. Why can't you view 
+Your Docker Host is running, the project's containers are up, and command-line operations work fine. Why can't you view
 the site in your web browser?
 
 ### DNS Services
@@ -156,14 +156,14 @@ If those services are not running, try `rig dns` to bring them up, or a full `ri
 
 ### DNS Configuration
 
-It is also possible that the DNS services are running for your environment, but somehow the configuration is wrong. Run 
-`rig dns-records` and make sure your project has an entry. If not, you may need another restart, or perhaps you are 
+It is also possible that the DNS services are running for your environment, but somehow the configuration is wrong. Run
+`rig dns-records` and make sure your project has an entry. If not, you may need another restart, or perhaps you are
 missing `com.dnsdock.name` and `com.dnsdock.image` labels in your docker-compose.yml?
 
 ### Slow-starting Services
 
-Some services, such as Apache Solr or Varnish, can take longer to start up than Apache and PHP-FPM. As a result you might 
-load the browser so fast that not all services are available, which in the case of a proxy may prevent the page from 
+Some services, such as Apache Solr or Varnish, can take longer to start up than Apache and PHP-FPM. As a result you might
+load the browser so fast that not all services are available, which in the case of a proxy may prevent the page from
 loading at all. Wait a short time and try reloading the page.
 
 ### Failed Health Checks
@@ -192,11 +192,11 @@ Your other services should already be up and functional when this is done, so th
 
 ## Service Became Non-Responsive
 
-Sometimes a service locks up. Apache stops serving results, Solr stops indexing or responding to search queries. These 
-things happen on servers all the time. It may even happen more often on Docker, especially since we are now using more 
+Sometimes a service locks up. Apache stops serving results, Solr stops indexing or responding to search queries. These
+things happen on servers all the time. It may even happen more often on Docker, especially since we are now using more
 "infrastructure" in our local environments.
 
-Docker is meant to easily sandbox these problems from the rest of your machine, and to easily resolve these problems by 
+Docker is meant to easily sandbox these problems from the rest of your machine, and to easily resolve these problems by
 allowing you to dump the problem and start over fresh very easily.
 
 Hard reset on a service (as describe above), is very much like a power cycle:
@@ -207,7 +207,7 @@ docker-compose rm -f [BROKEN_SERVICE]
 docker-compose up -d [BROKEN_SERVICE]
 ```
 
-Sometimes data for a service is volume mounted from outside the container. This persistence is good when the data is 
+Sometimes data for a service is volume mounted from outside the container. This persistence is good when the data is
 healthy, but can be really bad if the data is part of the problem (e.g., broken lockfiles).
 
 ```bash
@@ -215,24 +215,24 @@ docker-machine ssh [MACHINE_NAME]
 rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
 ```
 
-Remember that your service may have configuration or data in another service, you may need to perform this operation 
+Remember that your service may have configuration or data in another service, you may need to perform this operation
 against multiple containers (e.g., Solr)
 
 ## NFS Conflicts with other Environments
 
-Running the Devtools VM in conjunction with other development environments (such as Vagrant) can sometimes cause conflicts 
-with volume mounts. This is due to the fact that the Devtools VM mounts the entirety of `/Users` into the VM on OS X. 
+Running the Devtools VM in conjunction with other development environments (such as Vagrant) can sometimes cause conflicts
+with volume mounts. This is due to the fact that the Devtools VM mounts the entirety of `/Users` into the VM on OS X.
 Additional NFS mounts from other environments that target subdirectories of `/Users` will fail.
 
-The easiest workaround is to keep projects that use non-Devtools environments like Vagrant in a directory *outside* of 
-`/Users`, such as `/opt`. Alternatively, you can run a single VM at a time and manually clear out `/etc/exports` prior 
+The easiest workaround is to keep projects that use non-Devtools environments like Vagrant in a directory *outside* of
+`/Users`, such as `/opt`. Alternatively, you can run a single VM at a time and manually clear out `/etc/exports` prior
 to switching environments/projects.
 
 ## Migrating Vagrant boxes outside of /Users
 
 If you'd like to move your vagrant boxes outside of your home directory, perform the following steps:
 
-1. Choose a destination folder.  We'll be using /opt/vms for this example. Insure the destination has enough free space. 
+1. Choose a destination folder.  We'll be using /opt/vms for this example. Insure the destination has enough free space.
 Typically this is not a problem because our Macs are one single partition.
 1. Make the new directory, and ensure your userid owns it:  `sudo mkdir /opt/vms; sudo chown -R userid:userid /opt/vms`
 1. Add `export VAGRANT_HOME=/opt/vms` to ~/.bash_profile
@@ -240,3 +240,31 @@ Typically this is not a problem because our Macs are one single partition.
 1. edit /etc/exports, updating any vagrant mount point to use the new location.  (example: /Users/userid/vagrant/projectx/cms)
 1. While a reboot isn't necessary, it'll help to make sure nothing is running and using the old mount points.
 1. cd into your new vagrant directory, and do a vagrant up.
+
+## Permission Errors During Container Startup
+
+NFS mounts from the host volume into a container may require a specific UID mapping in order for proper permission setup within the container. SSH key volume mounts are common in project build containers. If there's a problem with permissions for host files or directories being mounted inside the docker-machine via NFS, it could be a UID mapping problem. One way this problem manifests itself is, given a mount entry in a .yml file like:
+
+    volumes:
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+
+When starting the container, you may see an error like:
+
+    ERROR: Cannot start service cli: error while creating mount source path '/Users/username/.ssh/id_rsa': mkdir /Users/username/.ssh/id_rsa: permission denied
+
+Verify that the UID of the OSX directory is mapped correctly in `/etc/exports`.  In the host operating system (example is for OSX):
+
+    $ id
+    uid=502(username) gid=20(staff) groups=20(staff),...
+
+In /etc/exports:
+
+    # docker-machine-nfs-begin machine-name
+    /Users 192.168.99.100 -alldirs -mapall=501:20  # <-- incorrect
+    # docker-machine-nfs-end machine-name
+
+The -mapall arguments need to match your uid and gid from the id command.  If you need to change /etc/exports (in the host), edit it, save the changes, then restart the `nfsd`:
+
+    rig stop
+    sudo nfsd restart
+    rig start
