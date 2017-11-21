@@ -241,24 +241,29 @@ Typically this is not a problem because our Macs are one single partition.
 1. While a reboot isn't necessary, it'll help to make sure nothing is running and using the old mount points.
 1. cd into your new vagrant directory, and do a vagrant up.
 
-## Permission Errors during Build Container Startup
+## Permission Errors During Container Startup
 
-If there's a problem with permissions for host files or directories being mounted inside the docker-machine via NFS, it could be a UID mapping problem. One way this problem manifests itself is:
+NFS mounts from the host volume into a container may require a specific UID mapping in order for proper permission setup within the container. SSH key volume mounts are common in project build containers. If there's a problem with permissions for host files or directories being mounted inside the docker-machine via NFS, it could be a UID mapping problem. One way this problem manifests itself is, given a mount entry in a .yml file like:
+
+    volumes:
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+
+When starting the container, you may see an error like:
 
     ERROR: Cannot start service cli: error while creating mount source path '/Users/username/.ssh/id_rsa': mkdir /Users/username/.ssh/id_rsa: permission denied
 
-when trying to start the build container. Verify that the UID of the OSX directory is mapped correctly in `/etc/exports`.  In the host operating system (example is for OSX):
+Verify that the UID of the OSX directory is mapped correctly in `/etc/exports`.  In the host operating system (example is for OSX):
 
     $ id
     uid=502(username) gid=20(staff) groups=20(staff),...
 
 In /etc/exports:
 
-    # docker-machine-nfs-begin dev
+    # docker-machine-nfs-begin machine-name
     /Users 192.168.99.100 -alldirs -mapall=501:20  # <-- incorrect
-    # docker-machine-nfs-end dev
+    # docker-machine-nfs-end machine-name
 
-The -mapall arguments need to match your uid and gid from the id command.  If you need to change /etc/exports, edit it, save the changes, then restart the `nfsd`:
+The -mapall arguments need to match your uid and gid from the id command.  If you need to change /etc/exports (in the host), edit it, save the changes, then restart the `nfsd`:
 
     rig stop
     sudo nfsd restart
