@@ -1,20 +1,20 @@
 # Return Codes
 
 Return codes, sometimes called exit codes, are numbers returned from the `rig` executable 
-to indicate the status of the command when on exit.  Exit codes can be interpreted by 
-machine scripts to adapt in the event of successes of failures. Generally a return code 
-of `0` is used to indicate success.  Non-zero return codes are used to communicate that
-and error has occurred and can give an idea of what type of error was raised.
+to indicate the status of the requested command at exit. These codes can be interpreted by 
+scripts calling `rig` to react to success or failure states. Generally a return code 
+of `0` is used to indicate success. Non-zero return codes communicate that an error has 
+occurred and give an idea of the error type through the value returned.
 
-`rig` exit codes used to indiciate certain conditions and are as follows:
+`rig` exit code values are:
 
 * `1` - Default
   * Returned when an uncaught error is raised and the program exited unexpectedly. This is
-  used by the underlying cli framework as well. Project scripts can may also return this code.
+  used by the underlying cli framework as well. Project scripts may also return this code.
 * `12` - Environmental 
   * Returned when there is a problem with the execution environment and 
   the current command cannot continue. This is usually the result of the
-  Docker Machine not running or Docker is not configured correctly. Backup
-  and restore errors generally fall in this category too.
+  Docker Machine not running or when Docker is not configured correctly.
+  Backup and restore errors generally fall in this category too.
 * `13` - External Command / Upstream 
   * Returned when external scripts or setup commands have reported failure.
