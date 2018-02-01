@@ -75,7 +75,7 @@ docker run -d \
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
+  aacebedo/dnsdock:v1.16.4-amd64 --domain=vm
 ```
 
 1. Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ 
@@ -94,7 +94,7 @@ Requires=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill dnsdock
 ExecStartPre=-/usr/bin/docker rm dnsdock
-ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.1-amd64  --domain=vm
+ExecStart=/usr/bin/docker run --rm --name dnsdock -v /var/run/docker.sock:/var/run/docker.sock -l com.dnsdock.name=dnsdock -l com.dnsdock.image=outrigger -p 172.17.0.1:53:53/udp aacebedo/dnsdock:v1.16.4-amd64  --domain=vm
 ExecStop=/usr/bin/docker stop dnsdock
 Restart=always
 RestartSec=30
@@ -143,7 +143,7 @@ Make sure you are not running a service which binds all mapped IPs.  For example
   -l com.dnsdock.image=outrigger \
   -p 172.17.0.1:53:53/udp \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  aacebedo/dnsdock:v1.16.1-amd64 --domain=vm
+  aacebedo/dnsdock:v1.16.4-amd64 --domain=vm
   
   6aa76d0df98ede7e01c1cef53f105a79a60bab72ee905a1acd76ad57d4aeb014
   docker: Error response from daemon: driver failed programming external connectivity on endpoint dnsdock
