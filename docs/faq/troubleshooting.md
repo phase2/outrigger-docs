@@ -268,3 +268,17 @@ The -mapall arguments need to match your uid and gid from the id command.  If yo
     rig stop
     sudo nfsd restart
     rig start
+
+## Failures during project sync startup
+
+The initial sync process involves scanning your codebase to assemble a list of all the files it contains. For larger codebases or slower computers this process
+may not complete before a timeout is reached. The timeout attempts to ensure that if there is a problem that prevents the unison container or local process from
+starting you don't wait without realizing there is an issue. To see if you are getting an erroneous message message you can look to see if a local unison process
+and a unison container for your project eventually start.
+
+The easiest check can be to run the rig project sync command with the initial-sync-timeout option set to a large value such as 300 seconds.
+
+If you want to dig deeper, look for a local unison process on your host machine with your project sync volume name as a log file. For example:
+`ps aux | grep myproject-sync.log`. There should also be a docker container running with a name like myproject-sync. If both of those are present it is possible
+that a timeout that is too short is affecting you.
+
