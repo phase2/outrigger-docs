@@ -1,12 +1,12 @@
 # Project Configuration
 
-Projects can have a local `.outrigger.yml` file included in their project to define the `rig project` commands. This can
+Projects can have a local `outrigger.yml` file included in their project to define the `rig project` commands. This can
 be done to streamline the developer experience of the project, or to capture project specifics / intricacies in a place that
 is consistent for all team members.
 
 ## File Location
 
-The configuration file is typically named `.outrigger.yml` and is normally placed at the root of a project directory tree.
+The configuration file is typically named `outrigger.yml` and is normally placed at the root of a project directory tree.
 
 You may specify a $RIG_PROJECT_CONFIG_FILE environment variable to override this which can be useful for running rig project
 commands from different directories.
@@ -76,7 +76,7 @@ sync:
   # This is the name of the external volume to use (optional). Needs to match volume name in Docker Compose.
   volume: project-sync
   # These ignores will be added to unison and not synced between local and project volume
-  ignores:
+  ignore:
     - "Name .git"
     - "Path build/tmp"
     - "Regex full/path/to/*.json"
@@ -84,4 +84,6 @@ sync:
 ```
 
 See [this Outrigger Project configuration file](https://github.com/phase2/generator-outrigger-drupal/blob/master/generators/environment/templates/outrigger/outrigger.yml),
-from the `outrigger-drupal` generator, for an example of a detailed `.outrigger.yml` file.
+from the `outrigger-drupal` generator, for an example of a detailed `outrigger.yml` file.
+
+See [unison ignoring](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#ignore), for more ignoring examples.
