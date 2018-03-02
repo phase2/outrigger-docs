@@ -8,7 +8,7 @@ If you installed rig via Homebrew, you can check for updates by running
 
 ```bash
 brew update
-brew upgrade phase2/outrigger/rig
+brew upgrade outrigger-cli
 ```
 
 ### Testing your installation
