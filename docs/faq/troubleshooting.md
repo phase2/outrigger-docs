@@ -282,3 +282,16 @@ If you want to dig deeper, look for a local unison process on your host machine 
 `ps aux | grep myproject-sync.log`. There should also be a docker container running with a name like myproject-sync. If both of those are present it is possible
 that a timeout that is too short is affecting you.
 
+## Identifying and troubleshooting sync issues
+
+When the unison filesystem based syncing stops working it unfortunately does so silently. If the
+files your container is using don't seem to be updating when you think they should it may be that
+the syncing has stopped working. This has typically been observed happening when putting the host
+machine into sleep mode. It may also happen if something causes either side of the syncing
+process to crash due to a very high rate of filesystem changes. Simply restarting the sync usually
+resolves the issue.
+
+As of version 2.2.0, Outrigger has commands to help determine the state of the filesystem syncing a
+as well as commands that facilitate scripting and cleanup. See the [Additional Sync Commands section
+of Filesystem Sync](../project-setup/filesystem-sync.md#additional-sync-commands) for information
+about these commands.
