@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>DNS Resolution - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DNS Resolution";
+    var mkdocs_page_input_path = "common-tasks/dns-resolution.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project-setup/key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">DNS Resolution</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#dns-resolution">DNS Resolution</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#dns-names-for-your-containers">DNS Names for your containers</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Common Tasks &raquo;</li>
+        
+      
+    
+    <li>DNS Resolution</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/common-tasks/dns-resolution.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="dns-resolution">DNS Resolution</h1>
+<h2 id="dns-names-for-your-containers">DNS Names for your containers</h2>
+<p>Within the <code>labels</code> section of the docker-compose file you can specify labels that will control the DNS name of your 
+containers.  DNS names are in the format of <code>[name].[image].vm</code> (e.g web.outrigger.vm)  </p>
+<ul>
+<li>
+<p><code>com.dnsdock.name</code> - This is the type of container. Usually something like web, db, cache, etc.</p>
+</li>
+<li>
+<p><code>com.dnsdock.image</code> - This is generally your project name (e.g outrigger, drupal, etc.)</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All DNS names of Outrigger containers will end in <em>.vm</em></p>
+</div>
+<p>If you need multiple domains mapped to a container you can use the <code>com.dnsdock.alias</code> setting. It takes a full domain 
+name and can take a comma separated list (e.g. otherhost.outrigger.vm or alexandria.phase2.vm). Additionally, dnsdock 
+supports longer domain queries meaning if you have a service named web.outrigger.vm, you can also use 
+something.web.outrigger.vm and it will resolve to the same IP address.</p>
+<p>For all other DNS configuration options, please see the <a href="https://github.com/aacebedo/dnsdock#overrides-with-docker-labels">dnsdock label documentation</a></p>
+<h3 id="dns-forwarders">DNS Forwarders</h3>
+<p>Outrigger can be configured to use additional name servers to forward DNS requests if the record cannot be resolved by dnsdock.</p>
+<p>An example is if you connect to a VPN and need to resolve addresses to private servers within a VPN.  To enable this you 
+need to configure the <code>RIG_NAMESERVERS</code> environment variable to a comma separated list of <em>ip:port</em> 
+(example: <code>10.10.7.2:53,8.8.8.8:53</code>) before running either <code>rig start</code> or <code>rig dns</code>. We suggest putting this 
+env var configuration in your <code>~/.bashrc</code> or <code>~/.zshrc</code> so that it is always present when needed.  If you just need this 
+temporarily, you can pass the configuration in with the <code>--nameservers</code> command line option to <code>rig start</code> or <code>rig dns</code>. </p>
+<p>This configuration will try each forwarder name server, in order, to resolve names until success or all name servers 
+have been exhausted.</p>
+<h3 id="dns-command">DNS Command</h3>
+<p>There is also a <code>rig dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to 
+configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter on <code>rig</code>.</p>
+<h3 id="dns-debugging">DNS Debugging</h3>
+<p>If you want to see what containers have registered names, use the <code>rig dns-records</code> command. This command will list 
+all registered container names and aliases along with the container's IP address.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../upgrading-rig/" class="btn btn-neutral float-right" title="Upgrading Rig">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../setting-up-mail/" class="btn btn-neutral" title="Setting up mail"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../setting-up-mail/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../upgrading-rig/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

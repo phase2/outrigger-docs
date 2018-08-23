@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Troubleshooting - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Troubleshooting";
+    var mkdocs_page_input_path = "faq/troubleshooting.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project-setup/key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../general/">General</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Troubleshooting</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#troubleshooting">Troubleshooting</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#run-doctor">Run doctor</a></li>
+        
+            <li><a class="toctree-l4" href="#ensure-the-environment-is-setup-correctly">Ensure the environment is setup correctly</a></li>
+        
+            <li><a class="toctree-l4" href="#ensure-your-images-are-up-to-date">Ensure your images are up to date</a></li>
+        
+            <li><a class="toctree-l4" href="#configure-your-shell">Configure Your Shell</a></li>
+        
+            <li><a class="toctree-l4" href="#reset-everything">Reset everything</a></li>
+        
+            <li><a class="toctree-l4" href="#files-not-found">Files Not Found</a></li>
+        
+            <li><a class="toctree-l4" href="#image-not-found">Image not found</a></li>
+        
+            <li><a class="toctree-l4" href="#docker-client-and-server-version-incompatibilities">Docker client and server version incompatibilities</a></li>
+        
+            <li><a class="toctree-l4" href="#network-timed-out-and-cant-pull-container-image">Network timed out and can't pull container image</a></li>
+        
+            <li><a class="toctree-l4" href="#started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</a></li>
+        
+            <li><a class="toctree-l4" href="#containers-started-but-service-not-available">Containers Started but Service Not Available</a></li>
+        
+            <li><a class="toctree-l4" href="#service-became-non-responsive">Service Became Non-Responsive</a></li>
+        
+            <li><a class="toctree-l4" href="#nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</a></li>
+        
+            <li><a class="toctree-l4" href="#migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users</a></li>
+        
+            <li><a class="toctree-l4" href="#permission-errors-during-container-startup">Permission Errors During Container Startup</a></li>
+        
+            <li><a class="toctree-l4" href="#failures-during-project-sync-startup">Failures during project sync startup</a></li>
+        
+            <li><a class="toctree-l4" href="#identifying-and-troubleshooting-sync-issues">Identifying and troubleshooting sync issues</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>FAQ &raquo;</li>
+        
+      
+    
+    <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/faq/troubleshooting.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="troubleshooting">Troubleshooting</h1>
+<p>See the following sections for common problems and ways to solve them.</p>
+<h2 id="run-doctor">Run doctor</h2>
+<p>Run <code>rig doctor</code> to determine if your environment is set to run Outrigger.</p>
+<h2 id="ensure-the-environment-is-setup-correctly">Ensure the environment is setup correctly</h2>
+<p>It can be useful to ensure everything is in a clean state. The following should ensure that</p>
+<ul>
+<li><code>rig stop</code> stops the docker machine and cleans up networking</li>
+<li><code>eval "$(rig config)"</code> clears environmental variables docker uses to communicate with the docker host</li>
+<li><code>rig start</code> starts the docker machine</li>
+<li><code>eval "$(rig config)"</code> sets environmental variables docker uses to communicate with the docker host</li>
+</ul>
+<h2 id="ensure-your-images-are-up-to-date">Ensure your images are up to date</h2>
+<p>From time to time images are updated to fix bugs or add functionality. You won't automatically receive these updates but
+you can fetch them when you hear new ones are available.</p>
+<p><code>docker pull imagename</code> can be used if you want to update a specific image. For example, if you wanted to make sure you
+had the latest mariadb you'd run <code>docker pull phase2/mariadb</code>.</p>
+<p><code>docker-compose pull</code> can be used within a project directory to make sure you've got the latest version of all images
+in the docker-compose.yml file.</p>
+<h2 id="configure-your-shell">Configure Your Shell</h2>
+<p>If you do not have any containers listed when running <code>docker ps</code> or you get an error message like:</p>
+<pre><code>Get http:///var/run/docker.sock/v1.20/containers/json: dial unix /var/run/docker.sock: no such file or directory.
+
+* Are you trying to connect to a TLS-enabled daemon without TLS?
+
+* Is your docker daemon up and running?
+</code></pre>
+<p>Or an error message like:</p>
+<pre><code>Couldn't connect to Docker daemon - you might need to run `boot2docker up`.
+</code></pre>
+<p>Make sure your shell has the necessary environment variables by running:</p>
+<p><code>eval "$(rig config)"</code></p>
+<h2 id="reset-everything">Reset everything</h2>
+<p>If a problem continue to persists and the Docker Host is non-responsive, you may need to resort to the nuclear option of
+blowing everything away and starting over. Note this is a <strong>nuclear option</strong> as even your persistent data area will be
+removed if you don't back it up. If you have any data that needs to be maintained be sure to get a copy of it off of your
+VM first with the scripts provided.</p>
+<p>To wipe everything out and start over</p>
+<ol>
+<li>First backup your existing data (if desired) by running <code>rig data-backup</code>. This will sync your entire <code>/data</code>
+directory to your host machine.</li>
+<li>Then you can run <code>rig remove</code> This removes the broken Docker Host and it’s state, making way for a clean start.</li>
+<li>Next you can rebuild everything by running <code>rig start</code>. This will create you new Docker Host.</li>
+<li>If you wish to restore the <code>/data</code> directory that you previously backed up, then run <code>rig data-restore</code></li>
+</ol>
+<h2 id="files-not-found">Files Not Found</h2>
+<p>If you get messages about files not being found in the container that should be shared from your host computer, check the
+following:</p>
+<ol>
+<li>Is the project checked out under the <code>/Users</code> folder? Only files under the <code>/Users</code> folder are shared into the
+Docker Host (and thus containers) by default.</li>
+<li>Does the <code>docker-compose.yml</code> file have a volume mount set up that contains the missing files?</li>
+<li>Get shell in the Docker container via <code>docker exec -it &lt;container name&gt; /bin/bash</code> and check if the files are
+shared in the wrong place.</li>
+<li>Get shell in the Docker Machine with <code>docker-machine ssh dev</code> and check if you find the files under /Users.</li>
+</ol>
+<h2 id="image-not-found">Image not found</h2>
+<p>If you encounter the following error about the Docker image not being found when starting a project, it may indicate
+that the image is private and your Docker client is not logged into a required private Docker Hub repository:</p>
+<pre><code>Pulling repository phase2/privateimage
+
+Error: image phase2/privateimage:latest not found
+</code></pre>
+<p>To solve this, run <code>docker login</code> and provide the relevant credentials.</p>
+<h2 id="docker-client-and-server-version-incompatibilities">Docker client and server version incompatibilities</h2>
+<p>If you see an error similar to this:</p>
+<pre><code>Error response from daemon: client is newer than server (client API version: 1.20, server API version: 1.19)
+</code></pre>
+<p>You likely need to upgrade your Docker Host to a get Docker client API compatibility. Do that with:</p>
+<pre><code>`rig upgrade`
+</code></pre>
+<h2 id="network-timed-out-and-cant-pull-container-image">Network timed out and can't pull container image</h2>
+<p>Example:</p>
+<pre><code class="bash">Pulling cache (phase2/memcache:latest)...
+Pulling repository docker.io/phase2/memcache
+Network timed out while trying to connect to https://index.docker.io/v1/repositories/phase2/memcache/images. You may want to check your internet connection or if you are behind a proxy.
+</code></pre>
+
+<p>Try restarting the Docker Machine: <code>rig restart</code></p>
+<h2 id="started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</h2>
+<p>Example:</p>
+<pre><code class="bash">Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+[WARN] Docker daemon not running! Trying again in 3 seconds.  Try 1 of 10.
+...
+[WARN] Docker daemon not running! Trying again in 3 seconds.  Try 10 of 10.
+[ERROR] Docker daemon failed to start!
+</code></pre>
+
+<p>The Docker Host (probably called dev) has it's IP changed. The generated TLS Certs are no longer valid and must be regenerated.</p>
+<p>Possible causes or relations/patterns:</p>
+<ul>
+<li>Another VM was started in VirtualBox.</li>
+<li>Machine went to sleep and somehow caused issues with the running VM.</li>
+</ul>
+<p>Fix:</p>
+<p>Try running: <code>docker-machine env</code></p>
+<p>If that does not work, you should be able to start the VM directly through docker-machine: <code>docker-machine start dev</code></p>
+<p>Next, check the IP / TLS status by running: <code>docker-machine ls</code></p>
+<p>The output will likely report something akin to:</p>
+<pre><code class="bash">dev       -        virtualbox   Running   tcp://192.168.99.100:2376 Unknown
+Unable to query docker version: Get https://192.168.99.100:2376/v1.15/version: x509: certificate is valid for 192.168.99.101, not 192.168.99.100
+</code></pre>
+
+<p>Now, regenerate the TLS Certs: <code>docker-machine regenerate-certs dev -f</code>
+Devtools should now be able to start. Don't forget to run <code>eval "$(rig config)"</code> after.</p>
+<h2 id="containers-started-but-service-not-available">Containers Started but Service Not Available</h2>
+<p>Your Docker Host is running, the project's containers are up, and command-line operations work fine. Why can't you view
+the site in your web browser?</p>
+<h3 id="dns-services">DNS Services</h3>
+<p>The DNS services that Outrigger spins up may not be working. Run <code>docker ps</code> and see that you have a dnsdock and dnsmasq container.</p>
+<p>If those services are not running, try <code>rig dns</code> to bring them up, or a full <code>rig restart</code> if that does not work.</p>
+<p><code>rig dns-records</code> is also useful to see what containers have registered names.</p>
+<h3 id="dns-configuration">DNS Configuration</h3>
+<p>It is also possible that the DNS services are running for your environment, but somehow the configuration is wrong. Run
+<code>rig dns-records</code> and make sure your project has an entry. If not, you may need another restart, or perhaps you are
+missing <code>com.dnsdock.name</code> and <code>com.dnsdock.image</code> labels in your docker-compose.yml?</p>
+<h3 id="slow-starting-services">Slow-starting Services</h3>
+<p>Some services, such as Apache Solr or Varnish, can take longer to start up than Apache and PHP-FPM. As a result you might
+load the browser so fast that not all services are available, which in the case of a proxy may prevent the page from
+loading at all. Wait a short time and try reloading the page.</p>
+<h3 id="failed-health-checks">Failed Health Checks</h3>
+<p>Some services such as Varnish depend on others to operate, and have built-in health checks to verify the other service is operating.</p>
+<p>If such a health check fails, there could be two problems:</p>
+<ol>
+<li>The internal DNS routing between Docker containers is broken. Make sure the
+configuration of your services is correct.</li>
+<li>The dependency (e.g., Apache behind Varnish) is not yet up and running when Varnish performs its checks.</li>
+</ol>
+<p>In either case, you can often repair the problem by performing a clean restart of the broken service.</p>
+<pre><code class="bash">docker-compose stop proxy
+docker-compose rm -f proxy
+docker-compose up -d proxy
+</code></pre>
+
+<p>Your other services should already be up and functional when this is done, so the health check will not fail on account of (2).</p>
+<blockquote>
+<p><strong>Checking on Varnish Health</strong></p>
+<p>If you suspect Varnish may be failing, run <code>docker exec -it [VARNISH_CONTAINER] varnishlog</code> and scan for VCL compilation errors.</p>
+</blockquote>
+<h2 id="service-became-non-responsive">Service Became Non-Responsive</h2>
+<p>Sometimes a service locks up. Apache stops serving results, Solr stops indexing or responding to search queries. These
+things happen on servers all the time. It may even happen more often on Docker, especially since we are now using more
+"infrastructure" in our local environments.</p>
+<p>Docker is meant to easily sandbox these problems from the rest of your machine, and to easily resolve these problems by
+allowing you to dump the problem and start over fresh very easily.</p>
+<p>Hard reset on a service (as describe above), is very much like a power cycle:</p>
+<pre><code class="bash">docker-compose stop [BROKEN_SERVICE]
+docker-compose rm -f [BROKEN_SERVICE]
+docker-compose up -d [BROKEN_SERVICE]
+</code></pre>
+
+<p>Sometimes data for a service is volume mounted from outside the container. This persistence is good when the data is
+healthy, but can be really bad if the data is part of the problem (e.g., broken lockfiles).</p>
+<pre><code class="bash">docker-machine ssh [MACHINE_NAME]
+rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
+</code></pre>
+
+<p>Remember that your service may have configuration or data in another service, you may need to perform this operation
+against multiple containers (e.g., Solr)</p>
+<h2 id="nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</h2>
+<p>Running the Devtools VM in conjunction with other development environments (such as Vagrant) can sometimes cause conflicts
+with volume mounts. This is due to the fact that the Devtools VM mounts the entirety of <code>/Users</code> into the VM on OS X.
+Additional NFS mounts from other environments that target subdirectories of <code>/Users</code> will fail.</p>
+<p>The easiest workaround is to keep projects that use non-Devtools environments like Vagrant in a directory <em>outside</em> of
+<code>/Users</code>, such as <code>/opt</code>. Alternatively, you can run a single VM at a time and manually clear out <code>/etc/exports</code> prior
+to switching environments/projects.</p>
+<h2 id="migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users</h2>
+<p>If you'd like to move your vagrant boxes outside of your home directory, perform the following steps:</p>
+<ol>
+<li>Choose a destination folder.  We'll be using /opt/vms for this example. Insure the destination has enough free space.
+Typically this is not a problem because our Macs are one single partition.</li>
+<li>Make the new directory, and ensure your userid owns it:  <code>sudo mkdir /opt/vms; sudo chown -R userid:userid /opt/vms</code></li>
+<li>Add <code>export VAGRANT_HOME=/opt/vms</code> to ~/.bash_profile</li>
+<li>Move your vagrant folders over to /opt/vms.</li>
+<li>edit /etc/exports, updating any vagrant mount point to use the new location.  (example: /Users/userid/vagrant/projectx/cms)</li>
+<li>While a reboot isn't necessary, it'll help to make sure nothing is running and using the old mount points.</li>
+<li>cd into your new vagrant directory, and do a vagrant up.</li>
+</ol>
+<h2 id="permission-errors-during-container-startup">Permission Errors During Container Startup</h2>
+<p>NFS mounts from the host volume into a container may require a specific UID mapping in order for proper permission setup within the container. SSH key volume mounts are common in project build containers. If there's a problem with permissions for host files or directories being mounted inside the docker-machine via NFS, it could be a UID mapping problem. One way this problem manifests itself is, given a mount entry in a .yml file like:</p>
+<pre><code>volumes:
+  - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+</code></pre>
+<p>When starting the container, you may see an error like:</p>
+<pre><code>ERROR: Cannot start service cli: error while creating mount source path '/Users/username/.ssh/id_rsa': mkdir /Users/username/.ssh/id_rsa: permission denied
+</code></pre>
+<p>Verify that the UID of the OSX directory is mapped correctly in <code>/etc/exports</code>.  In the host operating system (example is for OSX):</p>
+<pre><code>$ id
+uid=502(username) gid=20(staff) groups=20(staff),...
+</code></pre>
+<p>In /etc/exports:</p>
+<pre><code># docker-machine-nfs-begin machine-name
+/Users 192.168.99.100 -alldirs -mapall=501:20  # &lt;-- incorrect
+# docker-machine-nfs-end machine-name
+</code></pre>
+<p>The -mapall arguments need to match your uid and gid from the id command.  If you need to change /etc/exports (in the host), edit it, save the changes, then restart the <code>nfsd</code>:</p>
+<pre><code>rig stop
+sudo nfsd restart
+rig start
+</code></pre>
+<h2 id="failures-during-project-sync-startup">Failures during project sync startup</h2>
+<p>The initial sync process involves scanning your codebase to assemble a list of all the files it contains. For larger codebases or slower computers this process
+may not complete before a timeout is reached. The timeout attempts to ensure that if there is a problem that prevents the unison container or local process from
+starting you don't wait without realizing there is an issue. To see if you are getting an erroneous message message you can look to see if a local unison process
+and a unison container for your project eventually start.</p>
+<p>The easiest check can be to run the rig project sync command with the initial-sync-timeout option set to a large value such as 300 seconds.</p>
+<p>If you want to dig deeper, look for a local unison process on your host machine with your project sync volume name as a log file. For example:
+<code>ps aux | grep myproject-sync.log</code>. There should also be a docker container running with a name like myproject-sync. If both of those are present it is possible
+that a timeout that is too short is affecting you.</p>
+<h2 id="identifying-and-troubleshooting-sync-issues">Identifying and troubleshooting sync issues</h2>
+<p>When the unison filesystem based syncing stops working it unfortunately does so silently. If the
+files your container is using don't seem to be updating when you think they should it may be that
+the syncing has stopped working. This has typically been observed happening when putting the host
+machine into sleep mode. It may also happen if something causes either side of the syncing
+process to crash due to a very high rate of filesystem changes. Simply restarting the sync usually
+resolves the issue.</p>
+<p>As of version 2.2.0, Outrigger has commands to help determine the state of the filesystem syncing a
+as well as commands that facilitate scripting and cleanup. See the <a href="../../project-setup/filesystem-sync/#additional-sync-commands">Additional Sync Commands section
+of Filesystem Sync</a> for information
+about these commands.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../docker-for-mac/" class="btn btn-neutral float-right" title="Docker for Mac">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../general/" class="btn btn-neutral" title="General"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../general/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../docker-for-mac/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Existing Projects - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Existing Projects";
+    var mkdocs_page_input_path = "project-setup/existing-projects.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../new-projects/">New Projects</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Existing Projects</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#existing-projects">Existing Projects</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#docker-compose-files">Docker Compose file(s)</a></li>
+        
+            <li><a class="toctree-l4" href="#custom-domain-names-for-project-services">Custom Domain Names for Project Services</a></li>
+        
+            <li><a class="toctree-l4" href="#sharing-code-into-and-across-containers">Sharing code into and across containers</a></li>
+        
+            <li><a class="toctree-l4" href="#persistent-data-storage">Persistent Data Storage</a></li>
+        
+            <li><a class="toctree-l4" href="#outriggeryml">.outrigger.yml</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Project Setup &raquo;</li>
+        
+      
+    
+    <li>Existing Projects</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/project-setup/existing-projects.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="existing-projects">Existing Projects</h1>
+<p>To add Outrigger support to an existing project, you'll need to understand how to create:</p>
+<ul>
+<li>Docker Compose file(s)</li>
+<li>Custom Domain Names for Project Services </li>
+<li>Local code sharing with your containers</li>
+<li>Persistent data storage</li>
+<li>An (<em>optional</em>) <code>.outrigger.yml</code> file</li>
+</ul>
+<h2 id="docker-compose-files">Docker Compose file(s)</h2>
+<p>Outrigger is intended to work with either raw Docker commands or Docker Compose files, and we find things are best when
+orchestrating your local environments using Docker Compose.</p>
+<p>Be sure to read the <a href="https://docs.docker.com/compose/compose-file/">Docker Compose compose file documentation</a>
+so that you have a handle on how to setup the needed configuration.</p>
+<h3 id="define-project-services">Define Project Services</h3>
+<p>The essential point is that you will need to define a Docker Compose Service for each of the components in your architecture.
+Web/API Server, database, cache/key-value store, search server, proxy cache, mail server, etc. Each of those will be configured
+as a service in your <code>docker-compose.yml</code> file.</p>
+<p>Please see the <a href="https://github.com/phase2/outrigger-examples">Outrigger Examples Repository</a> to see setups of various 
+technologies within Outrigger.  Specifically, the <a href="https://github.com/phase2/outrigger-examples/tree/master/drupal8">Drupal 8 example</a> 
+covers all of the high points.</p>
+<h3 id="build-container">Build Container</h3>
+<p>In addition to containers for all of your project services, we find it useful to have a container we refer to as the 
+<code>build</code> container. This container provides the tools supporting development of your project. </p>
+<p>The default build image for Outrigger is <code>outrigger/build</code>. It includes tools supporting a wide variety of modern
+web development such as <code>node</code>, <code>npm</code>, <code>composer</code>, <code>grunt</code>, <code>gulp</code>, <code>bower</code>, etc.</p>
+<p>We often configure the build container and associated command containers in a file named <code>build.yml</code>. The Drupal 8
+example mentioned before contains a sample a <a href="https://github.com/phase2/outrigger-examples/blob/master/drupal8/build.yml">build.yml</a>
+file.</p>
+<h3 id="choosing-images-for-project-services">Choosing Images For Project Services</h3>
+<p>Any valid Docker Image can work with Outrigger. We also supply <a href="../docker-images/">a collection of crafted Docker
+images</a> that are easily configured and optimized. An example for
+an Apache / PHP image based on PHP7 is <strong>outrigger/apache-php:php70</strong> or <strong>php:7.1.1-apache</strong>  </p>
+<div class="admonition important">
+<p class="admonition-title">Use Image Tags</p>
+<p>When selecting and image to use, be sure to also specify a tag for that image. When you do not
+specify a tag, the default tag of <em>latest</em> is used and it is easy to get out of sync with other
+team members or simply get unwanted changes if you do not explicitly specify an image tag.</p>
+</div>
+<h3 id="general-config">General Config</h3>
+<p>Once you set up your <code>docker-compose.yml</code> file, you'll likely need to customize your services for a variety of reasons. 
+Many images will use environment variables and/or volume mounts to customize the running container configuration. See
+<a href="../../common-tasks/customizing-container-configuration/">Customizing Container Configuration</a> to learn more about 
+customizing your configuration for your project. </p>
+<h2 id="custom-domain-names-for-project-services">Custom Domain Names for Project Services</h2>
+<p>See <a href="../../common-tasks/dns-resolution/">DNS Resolution</a> to learn how to use Docker Labels to specify
+custom domain names for your project's services.</p>
+<h2 id="sharing-code-into-and-across-containers">Sharing code into and across containers</h2>
+<p>The straightforward way to get code from your host into containers is to use an NFS volume mount.  This allows you, for
+example, to mount the current directory (<code>.</code>) to a specific place inside a container (<code>/var/www</code>) with a simple volume 
+mount specification in your <code>docker-compose.yml</code> file. See the <a href="https://docs.docker.com/compose/compose-file/#volumes">Volume Mount</a> 
+documentation on volume mount specifications. For example:</p>
+<pre><code>.:/var/www
+</code></pre>
+<p>If filesystem performance for builds or filesystem notifications for watches are what you need, check out the 
+<a href="../filesystem-sync/">Filesystem Sync</a> documentation to guide you through setup.</p>
+<h2 id="persistent-data-storage">Persistent Data Storage</h2>
+<p>And finally we have a Persistent Data Volume, <code>/data</code>, that lives within the Docker Machine. Be sure to read about the 
+Persistent Data Volume (<code>/data</code>) in the <a href="../key-concepts/">Key Concepts</a> documentation. Often data may need to persist across 
+container runs while needing some level of performance but not need to be shared directly with the host computer. 
+Things like the <code>/var/lib/mysql</code> data directory are often in this category as you may want to export a DB to your host 
+computer, but you very rarely want the raw MySQL data files.  For these cases a volume mount from <code>/data</code> into your containers
+is what you need.  For example:</p>
+<pre><code>/data/project-one/local/mysql:/var/lib/mysql
+</code></pre>
+<h2 id="outriggeryml">.outrigger.yml</h2>
+<p>Finally, you can customize the <code>rig project run</code> command with common or project specific scripts to provide a considerable
+upgrade to the developer experience. See <a href="../project-configuration/">Project Configuration</a> for details on how to use
+an <code>.outrigger.yml</code> file in your project directory to have project specific configuration integrated into <code>rig</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../project-configuration/" class="btn btn-neutral float-right" title="Project Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../new-projects/" class="btn btn-neutral" title="New Projects"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../new-projects/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../project-configuration/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Windows Installation - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Windows Installation";
+    var mkdocs_page_input_path = "getting-started/windows-installation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linux-installation/">Linux Installation</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Windows Installation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#windows-installation">Windows Installation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#install-virtualbox">Install VirtualBox</a></li>
+        
+            <li><a class="toctree-l4" href="#install-docker-tools">Install docker tools</a></li>
+        
+            <li><a class="toctree-l4" href="#download-the-latest-rig-binary">Download the latest rig binary</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project-setup/key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Getting Started &raquo;</li>
+        
+      
+    
+    <li>Windows Installation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/getting-started/windows-installation.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="windows-installation">Windows Installation</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Windows is not yet fully supported but the following information should
+help you get a functioning environment running. Submissions of
+information that helps improve the command examples and that can be
+rolled into the automation afforded by the rig binary are welcome.</p>
+</div>
+<h2 id="install-virtualbox">Install VirtualBox</h2>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox Downloads</a></p>
+<h2 id="install-docker-tools">Install docker tools</h2>
+<p>You will need to install the following docker tools. It is recommended
+that you use <a href="https://chocolatey.org/">chocolatey</a> or an installation
+mechanism which allows you to simply acquire these binaries with no
+additional setup.</p>
+<ul>
+<li>docker</li>
+<li>docker-machine</li>
+<li>docker-compose</li>
+</ul>
+<h2 id="download-the-latest-rig-binary">Download the latest <code>rig</code> binary</h2>
+<p>The latest Windows binary for rig can be found at https://github.com/phase2/rig/releases.</p>
+<p>This binary is responsible for a few tasks on the initial execution of
+the <code>rig start</code> command. Information below assumes default values for
+all options.</p>
+<ul>
+<li>Checking for the existence of a virtual machine instance to serve as a
+docker host and creation if it does not exist. Creation is of a virtual
+machine named dev using a boot2docker iso file based on the version of
+the <code>docker</code> binary installed. This is a command that typically looks like:
+<code>docker-machine create dev --driver=virtualbox --virtualbox-boot2docker-url=https://github.com/boot2docker/boot2docker/releases/download/v17.04.0-ce-rc1/boot2docker.iso --virtualbox-memory=4096 --virtualbox-cpu-count=2 --virtualbox-disk-size=40000 --engine-opt dns=172.17.42.1 --engine-opt bip=172.17.42.1/16 --virtualbox-hostonly-nicpromisc allow-all</code></li>
+<li>Startup of created virtual machine serving as docker host.</li>
+<li>Ensuring proper environmental variable settings for communicating
+with the running machine. See <code>docker-machine env dev</code> for needed
+variables and values.</li>
+<li>Setup of routing rules so that all traffic destined for 172.17.0.0/16
+is routed to the IP address of the running instance. This is usually
+a command that looks something like:
+<code>runas /noprofile /user:Administrator route DELETE 172.17.0.0</code> to clean
+any lingering setup and then
+<code>runas /noprofile /user:Administrator route -p ADD 172.17.0.0/16 $(docker-machine ip dev)</code></li>
+<li>Setting up the /data directory within the docker host to point at a
+persistent disk to allow space for non ephemeral data to be stored.
+There should be a <code>/mnt/sda1</code> drive available within the virtual machine
+that a data directory should be created on and then linked to via the
+command <code>sudo ln -s /mnt/sda1/data /data</code></li>
+<li>Instantiation of a dnsdock container to provide DNS services via the
+command <code>docker run --restart=always -d -v /var/run/docker.sock:/var/run/docker.sock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=dnsdock --name dnsdock -p 172.17.42.1:53:53/udp phase2/dnsdock</code></li>
+<li>Setup of DNS services so that *.vm addresses attempt to resolve
+against the running dnsdock container. It is currently unknown how
+to get Windows to accomplish this in a safe way when the containers
+are not running but a work around is to use the <code>rig dns-records</code>
+command to provide output for entry into the
+<code>C:\Windows\System32\Drivers\etc\hosts</code> file.</li>
+<li>Sharing of the home directory of all of your users via NFS with the
+dev instance. On OS X this is accomplished via the <a href="https://github.com/adlogix/docker-machine-nfs">docker-machine-nfs.sh</a>
+script. This will allow for code on your local machine to be executed
+from within a running container as long as it is in your home directory.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../first-steps/" class="btn btn-neutral float-right" title="First Steps">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../linux-installation/" class="btn btn-neutral" title="Linux Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../linux-installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../first-steps/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

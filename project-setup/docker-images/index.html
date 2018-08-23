@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Docker Images - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Docker Images";
+    var mkdocs_page_input_path = "project-setup/docker-images.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Docker Images</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#docker-images">Docker Images</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#key-components">Key components</a></li>
+        
+            <li><a class="toctree-l4" href="#images">Images</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Project Setup &raquo;</li>
+        
+      
+    
+    <li>Docker Images</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/project-setup/docker-images.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="docker-images">Docker Images</h1>
+<h2 id="key-components">Key components</h2>
+<p>The following Docker Images have been built to work with Outrigger. They all have a similar and consistent 
+setup, so when using these images it is important to know the technology in place and how to customize it for you purposes.<br />
+We have provided environmental configuration for the most frequently customized options, and any extended customization 
+can be made by following the recommendations in <a href="../common-tasks/customizing-container-configuration">Customizing container configuration</a></p>
+<p>These images are built with the following software</p>
+<ul>
+<li><a href="https://github.com/just-containers/s6-overlay">S6-overlay</a> Init System</li>
+<li><a href="http://www.confd.io/">confd</a> config file templating</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below are a collection of tuned images for working with Outrigger, but <strong>any</strong> Docker Image can be used within Outrigger.
+Additionally these Docker Images do not need to be used with Outrigger, they can be used in any Docker environment.</p>
+</div>
+<h2 id="images">Images</h2>
+<h3 id="outriggerservicebase">outrigger/servicebase</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/servicebase/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-servicebase">Repo</a>) </p>
+<p>A CentOS 7 base image that has s6-overlay and confd. This is a useful image for extending to build non-trivial services.</p>
+<h3 id="outriggerservicebaselight">outrigger/servicebaselight</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/servicebaselight/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-servicebaselight">Repo</a>)</p>
+<p>This is an Alpine-based image that has had the S6-overlay init system and confd added to it.</p>
+<p>In addition to the lightweight Alpine base it also includes bash and glibc so that Go-based Linux binaries will run. This 
+image is only ~8MB when compared to the 100+MB of servicebase.</p>
+<h3 id="outriggerapache-php">outrigger/apache-php</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/apache-php/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-apache-php">Repo</a>)</p>
+<p>Apache &amp; PHP runtime images. It currently support PHP 5.5, 5.6, and 7.0</p>
+<h3 id="outriggerapache-php-base">outrigger/apache-php-base</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/apache-php-base/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-apache-php-base">Repo</a>)</p>
+<p>A base image for outrigger/apache-php. Includes Apache and a default VirtualHost configured with a proxy to PHP-FPM. It 
+does not include the php runtime, that is handed in the extension image(s).</p>
+<h3 id="outriggerbuild">outrigger/build</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/build/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-build">Repo</a>)</p>
+<p>This image provides the collection of development tools necessary to build applications, bundled with a wide array of 
+tools useful for development and troubleshooting via the command-line interface. While it is possible to directly
+connect via the "web" containers (apache-php), this is the preferred way to perform "server work".</p>
+<p>It also contains some extras you may need to work with Drupal, including use of tools such as 
+<a href="https://drupalconsole.com/">Drupal Console</a>, <a href="https://github.com/phase2/grunt-drupal-tasks">Grunt Drupal Tasks</a> and 
+<a href="https://github.com/phase2/pattern-lab-starter">Pattern Lab Starter</a>.</p>
+<h3 id="outriggermariadb">outrigger/mariadb</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/mariadb/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-mariadb">Repo</a>)</p>
+<p>MariaDB image for MySQL based builds with confd templates for config</p>
+<h3 id="outriggermemcache">outrigger/memcache</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/memcache/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-memcache">Repo</a>)</p>
+<p>Memcache image with configurable settings</p>
+<h3 id="outriggerredis">outrigger/redis</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/redis/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-redis">Repo</a>)</p>
+<p>Redis image with a confd template for redis.conf</p>
+<h3 id="outriggernode">outrigger/node</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/node/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-node">Repo</a>)</p>
+<p>Node image </p>
+<h3 id="outriggervarnish">outrigger/varnish</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/varnish/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-varnish">Repo</a>)</p>
+<p>Varnish container with fancy environment variables for easy configuration</p>
+<h3 id="outriggerjenkins-docker">outrigger/jenkins-docker</h3>
+<p>(<a href="https://hub.docker.com/r/outrigger/jenkins-docker/">Docker Hub</a>) (<a href="https://github.com/phase2/docker-jenkins-docker">Repo</a>)</p>
+<p>Jenkins image that is built to be able to run Docker commands and launch containers. Docker-inception.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../common-tasks/starting-your-project-containers/" class="btn btn-neutral float-right" title="Starting your project containers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../filesystem-sync/" class="btn btn-neutral" title="Filesystem Sync"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../filesystem-sync/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../common-tasks/starting-your-project-containers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

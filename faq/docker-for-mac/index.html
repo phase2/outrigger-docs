@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Docker for Mac - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Docker for Mac";
+    var mkdocs_page_input_path = "faq/docker-for-mac.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project-setup/key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Docker for Mac</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#docker-for-mac-support">Docker for Mac Support</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#using-only-the-docker-for-mac-binaries">Using only the Docker for Mac Binaries</a></li>
+        
+            <li><a class="toctree-l4" href="#using-the-docker-for-mac-binaries-and-hypervisor">Using the Docker for Mac Binaries and Hypervisor</a></li>
+        
+            <li><a class="toctree-l4" href="#uninstalling-docker-for-mac">Uninstalling Docker for Mac</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>FAQ &raquo;</li>
+        
+      
+    
+    <li>Docker for Mac</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/faq/docker-for-mac.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="docker-for-mac-support">Docker for Mac Support</h1>
+<p>Docker for Mac is a native hypervisor implementation of Docker that does not rely on a virtual machine provided by Docker 
+Machine.  It is new with some limitations and potential conflicts with Outrigger. We will highlight the path to a peaceful 
+coexistence. </p>
+<h2 id="using-only-the-docker-for-mac-binaries">Using only the Docker for Mac Binaries</h2>
+<p>Docker for Mac provides <code>docker</code> and <code>docker-compose</code> binaries in <code>/usr/local/bin</code>.  This install location conflicts with
+the binaries provided by Homebrew, but Outrigger can use these binaries too.  If you have installed Docker for Mac first, 
+you will get errors when trying to install the <code>docker</code> and <code>docker-compose</code> binaries via Homebrew. Those errors are fine, 
+as long as when all is said and done <code>docker</code>, <code>docker-compose</code>, and <code>docker-machine</code> are all available on your <code>$PATH</code>.</p>
+<p>To use the binaries with your Outrigger VM you simply need to run the <code>eval "$(rig config)"</code> command to setup your
+Docker environment.  This will point the <code>docker</code> to your VM.  You will need to do this in every shell that you want to 
+use the Outrigger VM.  If you then need to transition back to using the Docker for Mac hypervisor, you will need to unset 
+the Outrigger <code>docker</code> configuration. Use <code>eval "$(docker-machine env -u)"</code> to unset all <code>DOCKER_*</code> environment variables. </p>
+<p>If you need to do this often, we recommend setting up aliases to set/unset the environment vars.</p>
+<pre><code class="bash">alias re='eval &quot;$(rig config)&quot;'
+alias ru='eval &quot;$(docker-machine env -u)&quot;'
+</code></pre>
+
+<h2 id="using-the-docker-for-mac-binaries-and-hypervisor">Using the Docker for Mac Binaries and Hypervisor</h2>
+<p>To use the Docker for Mac Hypervisor follow the basic instructions below.</p>
+<div class="admonition important">
+<p class="admonition-title">Docker for Mac is less performant (early 2017)</p>
+<p>The FUSE driver they use to share your host filesystem into the hypervisor/containers is not nearly as performant as
+the NFS mount we use with the Outrigger VM.  Therefore, operations that do either a lot of filesystem reading (like 
+directory scan) or writing (like restoring DB dumps) will take much longer to perform.  It is advisable to use the
+Outrigger VM / VirtualBox for the time being simply for performance reasons.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Networking limitation when using the Docker for Mac Hypervisor</p>
+<p>There are some <a href="https://docs.docker.com/docker-for-mac/networking/#/known-limitations-use-cases-and-workarounds">known limitations</a>
+with the way networking is implemented with Docker for Mac.  Most notable we can not directly access containers on 
+their native IP address due to the lack of the docker0 bridge network that exists in the Docker Machine VM implementation.
+These limitations inhibit the fluid environment that Outrigger enables and as such is not natively supported (yet). We
+have done our best to highlight the issues and some of our ideas for workarounds below. Let us know how it goes if you
+venture down this path.</p>
+</div>
+<h3 id="setup-data">Setup /data</h3>
+<p>Outrigger makes a convention out of a <code>/data</code> directory within the VM.  To provide the same directory to Docker for Mac, 
+create a <code>/data</code> directory in the root of your Mac filesystem.  You may need to open up the permissions so the container(s)
+can write to it.</p>
+<pre><code class="bash">sudo mkdir /data &amp;&amp; sudo chmod 777 /data
+</code></pre>
+
+<p>Once you have created that directory, go into Docker for Mac Preferences &gt; File Sharing and add <code>/data</code> to the list of 
+shares and <em>Apply &amp; Restart</em> Docker for Mac.  With this <code>/data</code> directory setup your Compose files should work on either 
+the Docker for Mac Hypervisor or the Outrigger VM.</p>
+<h3 id="accessing-your-container-services">Accessing your Container Services</h3>
+<p>Docker for Mac does not provide a mechanism to route network traffic directly to your containers, they only support 
+publishing (binding) ports from your running containers to your host.  This means that all services are accessed on 
+localhost (127.0.0.1) and share the same port space. (Two web server can't both publish to port 80). The approach we think 
+makes sense (but don't actively support) is:</p>
+<ul>
+<li>Run <strong>jwilder/nginx-proxy</strong> as your only service that binds to port 80</li>
+<li>Start all of your web containers with the <code>VIRTUAL_HOST</code> environment variable used by nginx-proxy to specify it's domain name</li>
+<li>Resolve the domain name from the above <code>VIRTUAL_HOST</code> variable in one of two ways<ul>
+<li>Edit your <code>/etc/hosts</code> file and point the domain name at <code>127.0.0.1</code></li>
+<li>Use dnsmasq<ul>
+<li>Make sure dnsdock is not running</li>
+<li>In <code>/etc/resolver/vm</code> have <code>nameserver 127.0.0.1</code></li>
+<li>Run a dnsmasq container, bind it to port 53, configured to resolve all <strong>.vm</strong> addresses to <code>127.0.0.1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="uninstalling-docker-for-mac">Uninstalling Docker for Mac</h2>
+<p>Since Docker for Mac and Homebrew both install the Docker binaries in to <code>/usr/local/bin</code> after you uninstall Docker for Mac 
+your Outrigger environment wont work.  You may see an error like <code>command not found: docker</code>. The Docker for Mac 
+installation overwrote the Homebrew based Docker installation, but brew still believes they are installed, so you'll 
+need to unlink and re-link.</p>
+<pre><code class="bash">brew unlink docker &amp;&amp; brew link docker
+brew unlink docker-compose &amp;&amp; brew link docker-compose
+brew unlink docker-machine &amp;&amp; brew link docker-machine
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../how-to-contribute/" class="btn btn-neutral float-right" title="How to contribute">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../troubleshooting/" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../troubleshooting/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../how-to-contribute/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

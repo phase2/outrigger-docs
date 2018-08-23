@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Filesystem Sync - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Filesystem Sync";
+    var mkdocs_page_input_path = "project-setup/filesystem-sync.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../project-configuration/">Project Configuration</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Filesystem Sync</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#filesystem-sync">Filesystem Sync</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#setting-up-sync-for-your-projects-containers">Setting Up Sync for Your Project's Containers</a></li>
+        
+            <li><a class="toctree-l4" href="#managing-the-file-sync-process">Managing the File Sync Process</a></li>
+        
+            <li><a class="toctree-l4" href="#additional-sync-commands">Additional Sync Commands</a></li>
+        
+            <li><a class="toctree-l4" href="#how-file-sync-works-in-linux-environments">How File Sync works in Linux Environments</a></li>
+        
+            <li><a class="toctree-l4" href="#setting-up-file-sync-manually-using-override-files">Setting up file sync manually using Override Files</a></li>
+        
+            <li><a class="toctree-l4" href="#why-sync-instead-of-nfs">Why Sync Instead of NFS?</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-watches/">Using watches</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/using-xdebug-with-outrigger/">Using Xdebug with Outrigger</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../common-tasks/creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Project Setup &raquo;</li>
+        
+      
+    
+    <li>Filesystem Sync</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/project-setup/filesystem-sync.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="filesystem-sync">Filesystem Sync</h1>
+<p>Outrigger uses <a href="https://github.com/bcpierce00/unison">Unison</a> to provide high-performance,
+bi-directional file synchronization between your local operating system and Docker containers.
+This is not the only means of sharing code or data with application containers, but it is
+the recommended approach for sharing files that must also be efficiently available to
+developers and their local tools (e.g., IDEs).</p>
+<p>With Unison, all the files from the root of your project are synced via a dedicated
+container and exposed as a named <a href="https://docs.docker.com/engine/tutorials/dockervolumes/">Docker Volume</a>
+to the rest of your application. This volume is used as the file "source" for a volume
+mount to allow nearly native filesystem performance and features.</p>
+<p>For more on why Outrigger introduced Unison, jump down to <a href="#why-sync-instead-of-nfs">Why Sync Instead of NFS?</a></p>
+<h2 id="setting-up-sync-for-your-projects-containers">Setting Up Sync for Your Project's Containers</h2>
+<p>To setup <code>unison</code> sync for your containers you will need to
+<a href="https://docs.docker.com/compose/compose-file/#volume-configuration-reference">reference an external volume</a>
+in your <code>docker-compose.yml</code> and use that external volume in the mount specification for any services that need to
+reference the same set of files.</p>
+<p>Since volumes are global within your Docker host, the name of this external volume
+should be namespaced to your project. The convention is to use <code>projectname-sync</code>
+as the volume name. Using the same volume will ensure all containers stay in sync.
+This includes specifying that volume for your <a href="/common-tasks/using-the-build-container">build container</a>,
+if you are using one (typically defined in build.yml).</p>
+<h3 id="add-the-volume-to-your-docker-compose-file">Add the volume to your docker-compose file</h3>
+<p>Note that volume definitions are available as of docker-compose schema v2. <code>volumes</code> are
+a root-level property in the docker-compose schema and should not be nested below services.</p>
+<pre><code class="yaml">volumes:
+  projectname-sync:
+    external: true
+</code></pre>
+
+<div class="admonition important">
+<p class="admonition-title">Note about volume name</p>
+<p>If you optionally specified a volume name to the <code>project sync:start</code> command or
+configured a name in your <a href="../project-configuration/">Outrigger Project Configuration</a>
+file the name in this volumes section must match the one specified. The reason why we
+don't exclusively grab the volume name from the compose file is that this volume may be
+managed outside of Outrigger by another tool. We also want to support named volumes that
+don't precisely follow the <code>*-sync</code> convention described here.</p>
+</div>
+<h3 id="use-the-external-volume-as-your-local-mount-point">Use the external volume as your local mount point</h3>
+<pre><code class="yaml">services:
+  build:
+    image: outrigger/build:php71
+    volumes:
+      - projectname-sync:/var/www
+</code></pre>
+
+<h2 id="managing-the-file-sync-process">Managing the File Sync Process</h2>
+<p>The file synchronization is managed by the rig cli via <code>rig project sync:start</code> and <code>rig project sync:stop</code>.</p>
+<h3 id="configuring-the-sync-volume-name">Configuring the Sync Volume Name</h3>
+<p>The name of the sync volume can be set in a variety of ways. It is determined using the following precedence:</p>
+<ol>
+<li>Specified in the <code>sync</code> -&gt; <code>volume-name</code> property of your <a href="../project-configuration/">Outrigger Project Configuration</a></li>
+<li>In your <code>docker-compose.yml</code> file, specified as an <code>external</code> volume with a name of the pattern <code>*-sync</code></li>
+<li>If not specified anywhere else, it will use the name of the current project folder with <code>-sync</code> appended</li>
+</ol>
+<p>We recommend using approach #1 or #2 to ensure consistency across all environments. Approach #2 is most
+often used as it requires the most minimal configuration additions. If you use approach #1, make sure a
+volume of the same name is also defined as part of your docker or docker-compose configuration.
+Approach #1 is useful when the name of the volume can not follow the <code>*-sync</code> naming pattern for some reason.</p>
+<h3 id="configuring-ignore">Configuring ignore</h3>
+<p>When a need exists to restrict which files are synced using the <code>ignore</code> section. An example of limiting
+the synced files can be found in the sample in the <a href="../project-configuration/">Outrigger Project Configuration</a>
+documentation.</p>
+<h3 id="start-it-up">Start it up</h3>
+<p>From your project root run the command <code>rig project sync:start</code> (there is also an alias <code>rig project sync</code>)
+to get going. The initial sync can take a few seconds depending on the size of your project folder. You will
+see a progress indicator that will let you know when the initial sync is finished and things are ready to use.</p>
+<div class="admonition important">
+<p class="admonition-title">Workflow Change for Unison-using Projects</p>
+<p>Projects that use this file syncing approach will require execution of this command as a new step
+before any other docker commands can be run.</p>
+</div>
+<h3 id="cleaning-up">Cleaning up</h3>
+<p>Since the <code>project sync:start</code> command starts another container to manage the volume syncing, we have a
+command <code>project sync:stop</code> that will clean up that running container for you. It discovers the
+volume / container name the same way <code>project sync:start</code> does.</p>
+<p>When you are done for the day, or for that project, run <code>rig project sync:stop</code> from the project root to clean up any running
+sync containers for that project.</p>
+<h2 id="additional-sync-commands">Additional Sync Commands</h2>
+<p>As of version 2.2.0, Outrigger's <code>project sync</code> has commands as detailed below to facilitate scripting and troubleshooting.</p>
+<h3 id="synccheck">sync:check</h3>
+<p>The <code>project sync:check</code> command performs tests to verify if the sync process is working by looking
+to see if the Unison container is running, can accept connections and a file successfully transfers.</p>
+<h3 id="syncname">sync:name</h3>
+<p>The <code>project sync:name</code> command outputs the name of the docker container and volume that files are
+being synchronized with. It performs the same lookup logic as <code>project sync:start</code> does but only
+outputs the name of the volume and container to facilitate scripting processes that need it.</p>
+<h3 id="syncpurge">sync:purge</h3>
+<p>The <code>project sync:purge</code> command removes any running sync process for the project and deletes
+the docker volume being synced with. It also cleans up any temporary files created by Unison. </p>
+<h2 id="how-file-sync-works-in-linux-environments">How File Sync works in Linux Environments</h2>
+<p>Linux environments have native filesystem performance without anything as complex as file sync,
+because they do not need to use a virtualization layer to have access to the
+<a href="https://jvns.ca/blog/2016/10/10/what-even-is-a-container/">Linux Kernel's container support</a>.</p>
+<p>For this reason, any environment running on Linux will have local bind volumes created automatically
+where a Unison/sync volume would be used. This allows for the use of named volumes, but avoids using
+Unison where local filesystems have all the functionality needed.</p>
+<h2 id="setting-up-file-sync-manually-using-override-files">Setting up file sync manually using Override Files</h2>
+<p>See <a href="https://docs.docker.com/compose/extends/#understanding-multiple-compose-files">Understanding multiple Compose files</a>
+to understand how Docker Compose files work.</p>
+<h4 id="example-docker-composeyml">Example docker-compose.yml</h4>
+<pre><code class="yaml">services:
+  www:
+    image: outrigger/apache-php:php71
+    volumes:
+      - .:/var/www
+</code></pre>
+
+<h4 id="example-docker-composeoverrideyml">Example docker-compose.override.yml</h4>
+<pre><code class="yaml">services:
+  www:
+    volumes:
+      - projectname-sync:/var/www
+volumes:
+  projectname-sync:
+    external: true
+</code></pre>
+
+<h2 id="why-sync-instead-of-nfs">Why Sync Instead of NFS?</h2>
+<p>Outrigger provides easy, <a href="/project-setup/key-concepts">NFS-based filesystem mounts</a> to share code
+and files with your project containers. However, it is slow when writing, reading, or scanning
+thousands of files when compared to native filesystem performance.</p>
+<p>Some modern tool kits and package managers favor large numbers of small files and libraries
+so maintaining high performance of a build becomes challenging when your code base is on a
+volume mounted NFS share.</p>
+<p>NFS also has the downside of not propagating filesystem modification events. This can be problematic if you want to run
+a process in your container to rebuild or update compiled project assets when modification notifications are triggered
+due to local file editing in your IDE.</p>
+<p>Given the current state of the art of Virtual Machines and filesystems, these types of operations
+are better supported by bi-directional file syncing (which includes filesystem notifications).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../docker-images/" class="btn btn-neutral float-right" title="Docker Images">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../project-configuration/" class="btn btn-neutral" title="Project Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../project-configuration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../docker-images/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

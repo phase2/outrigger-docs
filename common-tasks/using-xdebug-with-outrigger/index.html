@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  
+  <title>Using Xdebug with Outrigger - Outrigger Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Using Xdebug with Outrigger";
+    var mkdocs_page_input_path = "common-tasks/using-xdebug-with-outrigger.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Outrigger Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Getting Started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../getting-started/system-requirements/">System Requirements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/mac-installation/">Mac Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/linux-installation/">Linux Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/windows-installation/">Windows Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../getting-started/first-steps/">First Steps</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Project Setup</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project-setup/key-concepts/">Key Concepts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/new-projects/">New Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/project-configuration/">Project Configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/filesystem-sync/">Filesystem Sync</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../project-setup/docker-images/">Docker Images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Common Tasks</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../starting-your-project-containers/">Starting your project containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-the-build-container/">Using the build container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-with-volumes/">Working with Volumes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-offline/">Working Offline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ssh-into-a-container/">SSH into a container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../using-watches/">Using watches</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Using Xdebug with Outrigger</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#using-xdebug-with-outrigger">Using Xdebug with Outrigger</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#conceptual-requirements">Conceptual Requirements</a></li>
+        
+            <li><a class="toctree-l4" href="#setup-steps">Setup Steps</a></li>
+        
+            <li><a class="toctree-l4" href="#debugging-your-configuration">Debugging Your Configuration</a></li>
+        
+            <li><a class="toctree-l4" href="#validate-settings-with-phpstorm">Validate settings with PhpStorm</a></li>
+        
+            <li><a class="toctree-l4" href="#overriding-the-default-xdebug-configuration">Overriding the Default Xdebug Configuration</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../accessing-logs/">Accessing logs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../inter-vm-communication/">Accessing containers from other VMs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ssh-keys-for-private-repos/">SSH Keys for private repos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../setting-up-mail/">Setting up mail</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dns-resolution/">DNS Resolution</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../upgrading-rig/">Upgrading Rig</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple-docker-machines/">Multiple Docker Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../routine-image-maintenance/">Routine Image Maintenance</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../creating-your-own-images/">Creating your own images</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/general/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq/how-to-contribute/">How to contribute</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/glossary/">Glossary</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/return-codes/">Return Codes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/architecture/">Architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/background/">Background</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/library/">Library</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Outrigger Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Common Tasks &raquo;</li>
+        
+      
+    
+    <li>Using Xdebug with Outrigger</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/phase2/outrigger-docs/edit/master/docs/common-tasks/using-xdebug-with-outrigger.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="using-xdebug-with-outrigger">Using Xdebug with Outrigger</h1>
+<p>Getting <a href="https://xdebug.org/">Xdebug</a> set up can be a bit challenging but while there are many discrete steps, they are
+individually straightforward. This guide will walk you through getting setup quickly.</p>
+<p>Examples below are with PhpStorm. Other IDEs should have similar steps and required configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Applies to use of the Outrigger Docker Images</p>
+<p>This documentation specifically pertains to using the
+<a href="https://hub.docker.com/r/outrigger/apache-php/">Apache-PHP Image</a>
+or the <a href="https://hub.docker.com/r/outrigger/build/">Build Image</a>.</p>
+<p><code>rig</code> itself is only relevant in that it brokers standardized DNS practices.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Make sure your environment is up-to-date</p>
+<p>Consider <a href="../upgrading-rig/">updating rig</a> before proceeding.</p>
+<p>Once done, run <code>rig doctor</code> to confirm Outrigger is healthy. Check out <a href="../../faq/troubleshooting/">Troubleshooting</a>
+or the <a href="../../faq/general/">F.A.Q.</a> if anything comes up.</p>
+<p>If you haven't updated your Docker Images recently, doing so now is a good precautionary step
+to ensure you have versions that work with this documentation. Check out <a href="../routine-image-maintenance/">Routine Image
+Maintenance</a> if you need a guide to updating.</p>
+</div>
+<h2 id="conceptual-requirements">Conceptual Requirements</h2>
+<p>This section details the end configuration needs for Xdebug and connection between the containers
+and your IDE.</p>
+<p>For both browser and CLI debugging your IDE needs to be configured to listen for the
+Xdebug connection and map paths of files as they appear in the container to how they appear
+to your IDE. Xdebug needs to be enabled and configured so that it knows how to talk to your
+IDE.</p>
+<p>If you are familiar with normal Xdebug setup, there are common steps which may be omitted.
+Specifically, there is no need to trigger the start of the debugger through query parameters,
+POST parameters, cookies or environmental variables. Containers are set to autostart debugging
+so as long as your IDE is listening debugging should begin automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Debugging Overhead</p>
+<p>The overhead from the attempted connection by Xdebug to your IDE is typically nominal. If you
+want to avoid it you can disable Xdebug by setting the <code>PHP_XDEBUG</code> environmental variable to
+"false". To allow debugging only when requested, override the PHP setting for
+xdebug.remote_autostart to disable the automatic connection.</p>
+</div>
+<h3 id="browser-based-debugging">Browser-based Debugging</h3>
+<p>For browser-based debugging ensure that your browser is connecting directly to the Apache-PHP
+container. This is because the IP address of the connection is used to connect back to your
+IDE. Chaining requests through intermediate containers like Varnish will result in the incorrect
+IP address getting used to attempt the connection to your IDE.</p>
+<h2 id="setup-steps">Setup Steps</h2>
+<p>The following section demonstrates required IDE configuration using PhpStorm. Other IDEs should
+have similar configuration options. The beginning of each section details the desired result of
+the configuration options.</p>
+<h3 id="phpstorm-configuration">PhpStorm Configuration</h3>
+<h4 id="adjust-the-projects-debug-settings">Adjust the Project's Debug Settings</h4>
+<p>The first step is to configure your IDE to listen on the right port for connections from Xdebug,
+accept those connection attempts and control interactions with the debugger.</p>
+<p>Open your project's settings and go to <em>Languages &amp; Frameworks -&gt; PHP -&gt; Debug</em>. You can get to
+the project settings by going to: PhpStorm &gt; Preferences (OS X) or File &gt; Settings (Windows,
+Linux).</p>
+<p><img alt="Debug Project Settings" src="../../readme_images/debug_preferences.png" /></p>
+<h5 id="required-settings">Required Settings</h5>
+<ul>
+<li><strong>Debug port</strong> should be set to 9000.</li>
+<li><strong>Can accept external connections</strong> should be enabled.</li>
+<li><strong>Max. simultaneous connections:</strong> should be set greater than 1 to facilitate handling multiple
+  requests at once. Command line debugging when using Drush usually requires multiple connections.</li>
+</ul>
+<h5 id="recommended-settings">Recommended Settings</h5>
+<ul>
+<li><strong>Ignore external connections through unregistered server configurations</strong> should be unselected to
+  ease setup. When unselected, PhpStorm will prompt about connections with unrecognized
+  configurations which can help troubleshoot configuration mistakes.</li>
+<li><strong>Break at first line in PHP scripts</strong> can be set as desired. Without this checked, you will need
+  to set breakpoints in your code.</li>
+<li><strong>Force break at first line ...</strong> options should be selected to ease identification of missing
+  configuration requirements.</li>
+</ul>
+<h4 id="set-up-a-server-configuration-for-the-project">Set Up A Server Configuration for the Project</h4>
+<p>The next step is to configure your IDE to translate between the paths for files it can see to the
+paths as they appear in the container to Xdebug.</p>
+<p>In your project's settings, go to <em>Languages &amp; Frameworks -&gt; PHP -&gt; Servers</em>.</p>
+<p>Create a new Server by clicking on the "+" button. Give your server a name and input the hostname
+of your container. It is recommended that you use the hostname as the server name. It will ease
+CLI debugging later.</p>
+<p>Be sure to add the docroot mappings. The example shown here is using the
+<a href="https://github.com/phase2/grunt-drupal-tasks">Grunt Drupal Tasks</a> project structure. There are two mappings in this
+case. One for the docroot (<code>build/html</code>) and the other for the <code>src</code> directory so that breakpoints can be set in the
+custom modules in the <code>src</code> directory as well.</p>
+<p>These mappings are used to match paths from inside the Docker container to the paths
+used in the local filesystem where PhpStorm is run.</p>
+<p><img alt="Server Project Settings" src="../../readme_images/servers_preferences.png" /></p>
+<h4 id="ensure-that-you-ide-is-listening-for-connections">Ensure That You IDE is Listening for Connections</h4>
+<p>Set PhpStorm to listen for connections using the Run menu or hitting the listen button in the toolbar.
+It's the one that looks like a telephone.</p>
+<p><img alt="Listen For Connections" src="../../readme_images/listen_for_connections.png" /></p>
+<h4 id="dbgp-proxy">DBGp Proxy</h4>
+<p>DBGp Proxy settings are not used when debugging Outrigger containers.</p>
+<h3 id="container-configuration">Container Configuration</h3>
+<p>Set the environmental variable <code>PHP_XDEBUG</code> to "true" for your container. If using a Docker Compose
+configuration file the setting will look something like the following:</p>
+<pre><code class="yaml">www:
+  image: outrigger/apache-php:php71
+  ...
+  environment:
+    PHP_XDEBUG: &quot;true&quot;
+  ...
+</code></pre>
+
+<p>For debugging via the command line, also set the <code>PHP_IDE_CONFIG</code> environmental variable to a value
+of "serverName=www.your-site.vm" where the actual value used is the same as the name you gave your
+server configuration in your PhpStorm setup earlier. If using a Docker compose configuration file
+the setting will look something like the following:</p>
+<pre><code class="yaml">cli:
+ image: outrigger/build:php71
+ ...
+ environment:
+   PHP_XDEBUG: &quot;true&quot;
+   PHP_IDE_CONFIG: &quot;serverName=www.your-site.vm&quot;
+ ...
+</code></pre>
+
+<p>You'll need to restart your containers after making these changes.</p>
+<h2 id="debugging-your-configuration">Debugging Your Configuration</h2>
+<p>If things aren't working you can use the following tips for debugging.</p>
+<h3 id="examining-xdebug-settings">Examining Xdebug settings</h3>
+<p>You can view your Xdebug configuration by looking inside the Apache container.</p>
+<p>With the container name (found via <code>docker ps</code>), try running:</p>
+<pre><code>docker exec [container_name] /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini
+</code></pre>
+
+<p>if using docker-compose with your Apache container named <strong>www</strong>, you can more simply run:</p>
+<pre><code>docker-compose exec www /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini
+</code></pre>
+
+<p>This path varies by PHP version. For PHP 5.6 check <code>/etc/opt/rh/rh-php56/php.d/15-xdebug.ini</code>.</p>
+<p>The important pieces to look for are:</p>
+<p>For both browser-based and CLI debugging</p>
+<pre><code class="ini">; The extension is loaded
+zend_extension=xdebug.so
+; Remote debugging is enabled
+xdebug.remote_enable=1
+; Debugging begins automatically
+xdebug.remote_autostart=1
+; Port should match your PhpStorm settings
+xdebug.remote_port=9000
+; Communication protocol should be dbgp
+xdebug.remote_handler=dbgp
+</code></pre>
+
+<p>For CLI debugging, the following should also be present. The value of remote_host when debugging
+using a browser is dynamically set based on requesting IP so the configured value does not matter.</p>
+<pre><code class="ini">xdebug.remote_host=192.168.99.1
+</code></pre>
+
+<h2 id="validate-settings-with-phpstorm">Validate settings with PhpStorm</h2>
+<p>Select the "Web Server Debug Validation" option from the "Run" menu option. (Confirm your Apache container is running
+or this validation will fail.)</p>
+<p><img alt="Validate Debug Option" src="../../readme_images/web_server_debug_validation.png" /></p>
+<p>This will display a dialog window that allows you to validate your settings. Make sure that your "Path to create
+validation script" points to your project docroot and the URL is your project URL.</p>
+<p>If all goes well, clicking the "Validate" button should give you something like this:</p>
+<p><img alt="Validate Debug Screen" src="../../readme_images/validate_debugger.png" /></p>
+<p>Click the dialog 'x' (close) button to close this dialog window.</p>
+<h3 id="restart-phpstorm-or-containers">Restart PhpStorm or Containers</h3>
+<p>Occasionally you may find that you need to restart PhpStorm or a container before connections succeed.</p>
+<h2 id="overriding-the-default-xdebug-configuration">Overriding the Default Xdebug Configuration</h2>
+<p>If your project or workflow has special needs, you can override the Xdebug configuration
+using Volume Mounts to substitute your own template file. Copy
+<a href="https://github.com/phase2/docker-apache-php-base/blob/master/root/etc/confd/templates/xdebug.ini.tmpl">the original template</a>
+into your project and make the necessary changes. (You can also pull your current version of this file from the locally
+running docker image.)</p>
+<p>Commit your version of the file and add a volume mount to your docker-compose manifest with an entry such as:</p>
+<p><code>./env/local/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl</code></p>
+<p>Once that's in place, you will have to restart the container to pick up the new volume mount:</p>
+<pre><code class="bash">docker-compose restart www
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../accessing-logs/" class="btn btn-neutral float-right" title="Accessing logs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../using-watches/" class="btn btn-neutral" title="Using watches"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/outrigger-docs/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../using-watches/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../accessing-logs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
