@@ -97,6 +97,26 @@ volume / container name the same way `project sync:start` does.
 When you are done for the day, or for that project, run `rig project sync:stop` from the project root to clean up any running
 sync containers for that project.
 
+## Additional Sync Commands
+
+As of version 2.2.0, Outrigger's `project sync` has commands as detailed below to facilitate scripting and troubleshooting.
+
+### sync:check
+
+The `project sync:check` command performs tests to verify if the sync process is working by looking
+to see if the Unison container is running, can accept connections and a file successfully transfers.
+
+### sync:name
+
+The `project sync:name` command outputs the name of the docker container and volume that files are
+being synchronized with. It performs the same lookup logic as `project sync:start` does but only
+outputs the name of the volume and container to facilitate scripting processes that need it.
+
+### sync:purge
+
+The `project sync:purge` command removes any running sync process for the project and deletes
+the docker volume being synced with. It also cleans up any temporary files created by Unison. 
+
 ## How File Sync works in Linux Environments
 
 Linux environments have native filesystem performance without anything as complex as file sync,
